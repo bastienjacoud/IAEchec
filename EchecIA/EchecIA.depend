@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1491465214 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\case.cpp
+	"../include/Case.h"
+
+1491464750 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\case.h
+	"Pion.h"
+
+1491464115 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\pion.h
+
+1491465222 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\pion.cpp
+	"../include/Pion.h"
+
