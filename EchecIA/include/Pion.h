@@ -15,6 +15,7 @@ class Pion
     private:
         int m_posX;
         int m_posY;
+        int m_b;
 };
 
 #endif // PION_H
