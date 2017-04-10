@@ -1,4 +1,4 @@
-#include "Tour.h"
+/*#include "Tour.h"
 
 Tour::Tour()
 {
@@ -9,3 +9,4 @@ Tour::~Tour()
 {
     //dtor
 }
+*/
