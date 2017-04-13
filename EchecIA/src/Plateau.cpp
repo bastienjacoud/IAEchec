@@ -1,4 +1,7 @@
+#include<iostream>
 #include "../include/Plateau.h"
+
+using namespace std;
 
 Plateau::Plateau()
 {
@@ -19,6 +22,6 @@ void Plateau::Setplateau(Case plateau[8][8])
 
 int main()
 {
-
+    cout<<"Nathan est une merde";
     return 0;
 }

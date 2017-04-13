@@ -1,18 +1,18 @@
 #ifndef CASE_H
 #define CASE_H
 
-#include "Pion.h"
+#include "Piece.h"
 
 class Case
 {
     public:
         Case();
         virtual ~Case();
-        Pion Getpion() { return m_pion; }
-        void Setpion(Pion val) { m_pion = val; }
+        Piece Getpiece() { return m_piece; }
+        void Setpiece(Piece val) { m_piece = val; }
     protected:
     private:
-        Pion m_pion;
+        Piece m_piece;
 };
 
 #endif // CASE_H

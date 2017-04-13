@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -33,10 +35,17 @@
 		</Compiler>
 		<Unit filename="include/Case.h" />
 		<Unit filename="include/Pion.h" />
+<<<<<<< HEAD
 		<Unit filename="include/Plateau.h" />
 		<Unit filename="src/Case.cpp" />
 		<Unit filename="src/Pion.cpp" />
 		<Unit filename="src/Plateau.cpp" />
+=======
+		<Unit filename="include/Tour.h" />
+		<Unit filename="src/Case.cpp" />
+		<Unit filename="src/Pion.cpp" />
+		<Unit filename="src/Tour.cpp" />
+>>>>>>> 3b17ea2181e1706fc9b86cfe2442bef125070e47
 		<Extensions>
 			<code_completion />
 			<envvars />
