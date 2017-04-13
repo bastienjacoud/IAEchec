@@ -10,6 +10,7 @@ class Fou {
 public:
     Fou();
     virtual ~Fou();
+    bool DeplacementOK(int depX, int depY);
     protected:
     private:
 };

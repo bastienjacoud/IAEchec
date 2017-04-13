@@ -2,6 +2,7 @@
 #define ECHECIA_PION_H
 
 #include <Piece.h>
+#include "Piece.h"
 
 class Pion : public Piece
 {
