@@ -1,3 +1,4 @@
+#include <array>
 #include "../include/Case.h"
 
 using namespace std;
