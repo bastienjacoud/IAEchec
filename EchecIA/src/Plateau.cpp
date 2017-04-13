@@ -22,6 +22,6 @@ void Plateau::Setplateau(Case plateau[8][8])
 
 int main()
 {
-    cout<<"Nathan est une merde";
+    cout<<"Bastien est une merde";
     return 0;
 }
