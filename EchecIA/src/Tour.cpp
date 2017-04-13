@@ -1,4 +1,6 @@
-/*#include "Tour.h"
+#include <array>
+#include "../include/Tour.h"
+using namespace std;
 
 Tour::Tour()
 {
@@ -9,4 +11,4 @@ Tour::~Tour()
 {
     //dtor
 }
-*/
+
