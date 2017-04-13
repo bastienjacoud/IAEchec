@@ -2,11 +2,26 @@
 1491465214 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\case.cpp
 	"../include/Case.h"
 
-1491464750 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\case.h
-	"Pion.h"
+1492075931 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\case.h
+	"Piece.h"
 
 1491464115 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\pion.h
 
 1491465222 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\pion.cpp
 	"../include/Pion.h"
+
+1492075931 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
+
+1492076520 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
+	<iostream>
+	"../include/Plateau.h"
+
+1491468342 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
+	"Case.h"
+
+1492075931 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\tour.cpp
+
+1492075931 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\piece.cpp
+	<array>
+	"../include/Piece.h"
 
