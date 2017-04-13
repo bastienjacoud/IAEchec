@@ -7,7 +7,11 @@
 
 
 class Fou {
-
+public:
+    Fou();
+    virtual ~Fou();
+    protected:
+    private:
 };
 
 
