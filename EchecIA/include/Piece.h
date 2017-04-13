@@ -1,12 +1,12 @@
-#ifndef PION_H
-#define PION_H
+#ifndef PIECE_H
+#define PIECE_H
 
 
-class Pion
+class Piece
 {
     public:
-        Pion();
-        virtual ~Pion();
+        Piece();
+        virtual ~Piece();
         int GetposX() { return m_posX; }
         void SetposX(int val) { m_posX = val; }
         int GetposY() { return m_posY; }
@@ -18,4 +18,4 @@ class Pion
         int m_b;
 };
 
-#endif // PION_H
+#endif // PIECE_H
