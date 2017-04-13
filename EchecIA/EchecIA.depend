@@ -1,16 +1,18 @@
 # depslib dependency file v1.0
-1491465214 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\case.cpp
+1492078387 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\case.cpp
+	<array>
 	"../include/Case.h"
 
 1492077112 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\case.h
 	"Piece.h"
 
-1492077159 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\pion.h
+1492079181 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\pion.h
+	<Piece.h>
 
-1492076686 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\pion.cpp
+1492079403 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\pion.cpp
 	"../include/Pion.h"
 
-1492075931 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
+1492079435 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
 
 1492076520 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
 	<iostream>
@@ -19,7 +21,7 @@
 1491468342 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
 	"Case.h"
 
-1492076686 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\tour.cpp
+1492078387 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\tour.cpp
 	<array>
 	"../include/Tour.h"
 
@@ -34,4 +36,15 @@
 	<Piece.h>
 
 1492077231 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\tour.h
+
+1492077984 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\cavalier.cpp
+	"Cavalier.h"
+
+1492077984 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\cavalier.h
+	<Piece.h>
+
+1492078387 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\fou.cpp
+	"../include/Fou.h"
+
+1492078387 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\fou.h
 
