@@ -5,7 +5,9 @@ using namespace std;
 
 Piece::Piece()
 {
-    //ctor
+    SetposX(-1);
+    SetposY(-1);
+    SetCouleur(0);
 }
 
 Piece::~Piece()

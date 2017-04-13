@@ -3,10 +3,12 @@
 
 using namespace std;
 
-Case::Case()
+Case::Case() : m_piece()
 {
     //ctor
 }
+
+
 
 Case::~Case()
 {

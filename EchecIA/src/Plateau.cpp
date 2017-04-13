@@ -5,7 +5,7 @@ using namespace std;
 
 Plateau::Plateau()
 {
-    //ctor
+
 }
 
 Plateau::~Plateau()
