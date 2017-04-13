@@ -2,12 +2,12 @@
 1491465214 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\case.cpp
 	"../include/Case.h"
 
-1492075931 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\case.h
+1492077112 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\case.h
 	"Piece.h"
 
-1491464115 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\pion.h
+1492077159 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\pion.h
 
-1491465222 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\pion.cpp
+1492076686 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\pion.cpp
 	"../include/Pion.h"
 
 1492075931 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
@@ -19,9 +19,19 @@
 1491468342 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
 	"Case.h"
 
-1492075931 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\tour.cpp
+1492076686 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\tour.cpp
+	<array>
+	"../include/Tour.h"
 
 1492075931 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\piece.cpp
 	<array>
 	"../include/Piece.h"
+
+1492077042 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\roi.cpp
+	"Roi.h"
+
+1492077042 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\roi.h
+	<Piece.h>
+
+1492077231 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\tour.h
 
