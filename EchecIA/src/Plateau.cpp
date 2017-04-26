@@ -10,7 +10,8 @@ Plateau::Plateau()
         for(int j=0;j<8;j++)
             this->m_plateau[i][j] = new Case();
     //placement des pions
-    this->m_plateau[0][0] = new Case(1);
+    delete this->m_plateau[0][0]->Getpiece();
+    this->m_plateau[0][0].ge
 }
 
 Plateau::~Plateau()

@@ -9,12 +9,6 @@ Case::Case() : m_piece()
     //ctor
 }
 
-Case::Case(int i)
-{
-    //dynamic_cast<Tour>(this.Getpiece()) = new Tour();
-}
-
-
 Case::~Case()
 {
     //dtor
@@ -26,5 +20,10 @@ void Case::Afficher()
         cout<<" _ ";
     else
         m_piece->Afficher();
+}
+
+void Case::ChangePiece(Piece* p)
+{
+
 }
 

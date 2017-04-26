@@ -7,11 +7,11 @@ class Case
 {
     public:
         Case();
-        Case(int i);
         virtual ~Case();
         Piece* Getpiece() { return m_piece; }
         void Setpiece(Piece val) { *m_piece = val; }
         void Afficher();
+        void ChangePiece(Piece* p);
     protected:
     private:
         Piece* m_piece;
