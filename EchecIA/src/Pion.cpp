@@ -1,3 +1,4 @@
+#include <array>
 #include "../include/Pion.h"
 using namespace std;
 
