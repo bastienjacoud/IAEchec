@@ -9,6 +9,7 @@ class Roi : public Piece
     public:
         Roi();
         virtual ~Roi();
+        bool DeplacementOK(int depX, int depY);
     protected:
     private:
 };

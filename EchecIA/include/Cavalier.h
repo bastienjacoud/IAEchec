@@ -9,6 +9,7 @@ class Cavalier : public Piece
     public:
         Cavalier();
         virtual ~Cavalier();
+        bool DeplacementOK(int depX, int depY);
     protected:
     private:
 };
