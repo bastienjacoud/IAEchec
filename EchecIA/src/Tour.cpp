@@ -1,4 +1,5 @@
 #include <array>
+#include <iostream>
 #include "../include/Tour.h"
 
 using namespace std;
@@ -21,4 +22,9 @@ bool Tour::DeplacementOK(int depX, int depY)
     }
 
     return false;
+}
+
+void Tour::Afficher()
+{
+    cout<<"T";
 }

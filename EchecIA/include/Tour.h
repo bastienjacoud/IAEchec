@@ -1,7 +1,7 @@
 #ifndef ECHECIA_TOUR_H
 #define ECHECIA_TOUR_H
 
-#include "Piece.h"
+#include <Piece.h>
 
 class Tour : public Piece
 {
@@ -9,6 +9,7 @@ class Tour : public Piece
         Tour();
         virtual ~Tour();
         bool DeplacementOK(int depX, int depY);
+        void Afficher();
 };
 
 #endif //ECHECIA_TOUR_H

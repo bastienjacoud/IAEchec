@@ -1,6 +1,7 @@
 #ifndef PIECE_H
 #define PIECE_H
 
+#include <Tour.h>
 
 class Piece
 {
@@ -13,6 +14,7 @@ class Piece
         void SetposY(int val) { m_posY = val; }
         int GetCouleur() {return m_couleur;}
         void SetCouleur(int couleur) {m_couleur = couleur;}
+        void Afficher();
     protected:
         int m_posX;
         int m_posY;

@@ -1,4 +1,5 @@
 #include <array>
+#include <iostream>
 #include "../include/Piece.h"
 
 using namespace std;
@@ -13,4 +14,9 @@ Piece::Piece()
 Piece::~Piece()
 {
     //dtor
+}
+
+void Piece::Afficher()
+{
+    cout<<" _ ";
 }
