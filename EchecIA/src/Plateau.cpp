@@ -11,7 +11,7 @@ Plateau::Plateau()
             this->m_plateau[i][j] = new Case();
     //placement des pions
     delete this->m_plateau[0][0]->Getpiece();
-    this->m_plateau[0][0].ge
+    //this->m_plateau[0][0].ge
 }
 
 Plateau::~Plateau()
