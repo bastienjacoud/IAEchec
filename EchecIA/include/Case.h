@@ -3,6 +3,10 @@
 
 #include "Piece.h"
 #include "Tour.h"
+#include "Roi.h"
+#include "Cavalier.h"
+#include "Fou.h"
+#include "Pion.h"
 
 class Case
 {

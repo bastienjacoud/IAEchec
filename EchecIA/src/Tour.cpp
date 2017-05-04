@@ -9,6 +9,11 @@ Tour::Tour()
     //ctor
 }
 
+Tour::Tour(int couleur) : Piece(couleur)
+{
+
+}
+
 Tour::~Tour()
 {
     //dtor
@@ -26,5 +31,5 @@ bool Tour::DeplacementOK(int depX, int depY)
 
 void Tour::Afficher()
 {
-    cout<<"T";
+    cout<<" T ";
 }

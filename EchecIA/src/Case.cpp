@@ -4,8 +4,9 @@
 
 using namespace std;
 
-Case::Case() : m_piece()
+Case::Case()
 {
+    this->m_piece = NULL;
     //ctor
 }
 

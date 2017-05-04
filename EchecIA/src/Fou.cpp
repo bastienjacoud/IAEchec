@@ -1,17 +1,26 @@
 //
 // Created by natjo on 13/04/2017.
 //
-
+#include <iostream>
 #include "../include/Fou.h"
 
+using namespace std;
+
+//Constructeur par défaut
 Fou::Fou()
+{
+
+}
+
+//Constructeur avec couleur
+Fou::Fou(int couleur) : Piece(couleur)
 {
 
 }
 
 Fou::~Fou()
 {
-    
+
 }
 
 
@@ -23,4 +32,9 @@ bool Fou::DeplacementOK(int depX, int depY)
     }
 
     return false;
+}
+
+void Fou::Afficher()
+{
+    cout<<" F ";
 }

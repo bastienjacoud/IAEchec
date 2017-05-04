@@ -8,8 +8,9 @@ class Roi : public Piece
 {
     public:
         Roi();
+        Roi(int couleur);
         virtual ~Roi();
-        bool DeplacementOK(int depX, int depY);
+        virtual void Afficher();
     protected:
     private:
 };

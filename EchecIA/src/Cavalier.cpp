@@ -1,8 +1,18 @@
+#include<iostream>
 #include "Cavalier.h"
 
+using namespace std;
+
+//Constructeur par défaut
 Cavalier::Cavalier()
 {
     //ctor
+}
+
+//Constructeur avec la couleur
+Cavalier::Cavalier(int couleur) : Piece(couleur)
+{
+
 }
 
 Cavalier::~Cavalier()
@@ -10,11 +20,7 @@ Cavalier::~Cavalier()
     //dtor
 }
 
-bool Cavalier::DeplacementOK(int depX, int depY)
+void Cavalier::Afficher()
 {
-    if((depX == 1 && (depY == 2 || depY == -2)) || (depX == -1 && (depY == 2 || depY == -2)) || (depY == 1 && (depX == 2 || depY == -2)) || (depY == -1 && (depX == 2 || depX == -2))) {
-        return true;
-    }
-
-    return false;
+    cout<<" C ";
 }

@@ -5,20 +5,42 @@ using namespace std;
 
 Plateau::Plateau()
 {
-    Tour* t = new Tour();
     //Initialisation de la grille
     for(int i=0; i<8; i++)
         for(int j=0;j<8;j++)
         {
             this->m_plateau[i][j] = new Case();
-            this->m_plateau[i][j]->Setpiece(new Tour());
+            //this->m_plateau[i][j]->Setpiece(new Tour());
         }
 
-    //placement des pions
-    /*
-    delete this->m_plateau[0][0]->Getpiece();
-    this->m_plateau[0][0]->Setpiece(t);
-    */
+    //placement des pions noirs
+    this->m_plateau[0][0]->Setpiece( new Tour(1) );
+    this->m_plateau[0][2]->Setpiece( new Fou(1) );
+    this->m_plateau[0][4]->Setpiece( new Roi(1) );
+    this->m_plateau[0][6]->Setpiece( new Cavalier(1) );
+    this->m_plateau[1][1]->Setpiece( new Pion(1) );
+    this->m_plateau[1][3]->Setpiece( new Pion(1) );
+    this->m_plateau[1][5]->Setpiece( new Pion(1) );
+    this->m_plateau[1][7]->Setpiece( new Pion(1) );
+    this->m_plateau[2][0]->Setpiece( new Pion(1) );
+    this->m_plateau[2][2]->Setpiece( new Pion(1) );
+    this->m_plateau[2][4]->Setpiece( new Pion(1) );
+    this->m_plateau[2][6]->Setpiece( new Pion(1) );
+
+    //placement des pions blancs
+    this->m_plateau[7][0]->Setpiece( new Tour(2) );
+    this->m_plateau[7][2]->Setpiece( new Fou(2) );
+    this->m_plateau[7][4]->Setpiece( new Roi(2) );
+    this->m_plateau[7][6]->Setpiece( new Cavalier(2) );
+    this->m_plateau[6][1]->Setpiece( new Pion(2) );
+    this->m_plateau[6][3]->Setpiece( new Pion(2) );
+    this->m_plateau[6][5]->Setpiece( new Pion(2) );
+    this->m_plateau[6][7]->Setpiece( new Pion(2) );
+    this->m_plateau[5][0]->Setpiece( new Pion(2) );
+    this->m_plateau[5][2]->Setpiece( new Pion(2) );
+    this->m_plateau[5][4]->Setpiece( new Pion(2) );
+    this->m_plateau[5][6]->Setpiece( new Pion(2) );
+
 }
 
 Plateau::~Plateau()
@@ -52,7 +74,6 @@ void Plateau::Afficher()
 
 int main()
 {
-    int a=2;
     Plateau* p = new Plateau();
     p->Afficher();
     return 0;

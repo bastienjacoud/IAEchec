@@ -8,8 +8,9 @@ class Cavalier : public Piece
 {
     public:
         Cavalier();
+        Cavalier(int couleur);
         virtual ~Cavalier();
-        bool DeplacementOK(int depX, int depY);
+        virtual void Afficher();
     protected:
     private:
 };

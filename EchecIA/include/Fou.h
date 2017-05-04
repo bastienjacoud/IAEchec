@@ -5,12 +5,16 @@
 #ifndef ECHECIA_FOU_H
 #define ECHECIA_FOU_H
 
+#include <Piece.h>
 
-class Fou {
-public:
-    Fou();
-    virtual ~Fou();
-    bool DeplacementOK(int depX, int depY);
+class Fou : public Piece
+{
+    public:
+        Fou();
+        Fou(int couleur);
+        virtual ~Fou();
+        bool DeplacementOK(int depX, int depY);
+        void Afficher();
     protected:
     private:
 };
