@@ -72,9 +72,21 @@ void Plateau::Afficher()
     }
 }
 
-void Plateau::prendrePiece(int xarrive, int yarrive)        //Fonction pour prendre une piece adverse
+void Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)        //Fonction pour prendre une piece adverse
 {
+    this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Getpiece() );
+    //
+}
 
+void Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
+{
+    if(this->Getplateau(xarrivee, yarrivee).Getpiece() == NULL)
+    {
+        this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Getpiece() );
+    }
+
+    else
+        this->prendrePiece(xdep, ydep, xarrivee, yarrivee);
 }
 
 int main()
@@ -96,12 +108,16 @@ int main()
         }
         while( p->Getplateau(xd,yd).Getpiece() == NULL );
 
-        cout << "ligne ou deplacer la piece : \n"; cin >> xf;
-        cout << "colonne ou deplacer la piece : \n"; cin >> yf;
+        do
+        {
+            cout << "ligne ou deplacer la piece : \n"; cin >> xf;
+            cout << "colonne ou deplacer la piece : \n"; cin >> yf;
+        }
+        while(xf>=8 && xf<0 && yf>=8 && yf<0);
+
+        p->DeplacerPiece(xd, yd, xf, yf);
+        p->Afficher();
+        //Attention, il manque les vérifications de l'équipe pour la sélection du pion !!!!
     }
-
-
-
-
     return 0;
 }

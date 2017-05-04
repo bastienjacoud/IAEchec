@@ -13,7 +13,8 @@ class Plateau
         void Setplateau(Case plateau[8][8]);
         void SetPiece(int i, int j, Piece* p);
         void Afficher();
-        void prendrePiece(int xarrive, int yarrive);
+        void prendrePiece(int xdep, int ydep, int xarrive, int yarrive);
+        void DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee);
     protected:
     private:
         Case* m_plateau[8][8];

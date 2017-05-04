@@ -6,7 +6,7 @@ using namespace std;
 
 Case::Case()
 {
-    this->m_piece = NULL;
+    this->m_piece = new Piece();
     //ctor
 }
 
