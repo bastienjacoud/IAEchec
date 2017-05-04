@@ -15,8 +15,9 @@ Piece::~Piece()
 {
     //dtor
 }
-
+/*
 void Piece::Afficher()
 {
     cout<<" _ ";
 }
+*/

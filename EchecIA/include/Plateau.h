@@ -11,6 +11,7 @@ class Plateau
         int main();
         Case Getplateau(int i, int j) { return *m_plateau[i][j]; }
         void Setplateau(Case plateau[8][8]);
+        void SetPiece(int i, int j, Piece* p);
         void Afficher();
     protected:
     private:
