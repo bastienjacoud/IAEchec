@@ -72,9 +72,27 @@ void Plateau::Afficher()
     }
 }
 
+void Plateau::prendrePiece(int xarrive, int yarrive)        //Fonction pour prendre une piece adverse
+{
+    
+}
+
 int main()
 {
     Plateau* p = new Plateau();
     p->Afficher();
+
+
+    int xd;
+    int yd;
+    int xf;
+    int yf;
+    cout << "ligne de la piece a bouger : \n"; cin >> xd;
+    cout << "colonne de la piece a bouger : \n"; cin >> yd;
+    cout << "ligne ou deplacer la piece : \n"; cin >> xf;
+    cout << "colonne ou deplacer la piece : \n"; cin >> yf;
+
+
+
     return 0;
 }
