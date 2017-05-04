@@ -22,11 +22,11 @@
 
 1493908585 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
 
-1493908371 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
+1493909303 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
 	<iostream>
 	"../include/Plateau.h"
 
-1493904730 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
+1493908789 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
 	"Case.h"
 
 1493908540 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\tour.cpp

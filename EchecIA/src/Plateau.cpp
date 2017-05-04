@@ -74,23 +74,32 @@ void Plateau::Afficher()
 
 void Plateau::prendrePiece(int xarrive, int yarrive)        //Fonction pour prendre une piece adverse
 {
-    
+
 }
 
 int main()
 {
     Plateau* p = new Plateau();
-    p->Afficher();
-
-
     int xd;
     int yd;
     int xf;
     int yf;
-    cout << "ligne de la piece a bouger : \n"; cin >> xd;
-    cout << "colonne de la piece a bouger : \n"; cin >> yd;
-    cout << "ligne ou deplacer la piece : \n"; cin >> xf;
-    cout << "colonne ou deplacer la piece : \n"; cin >> yf;
+    int b=1;//servira plus tard de booléen de test de fin du jeu
+    p->Afficher();
+
+    while(b)
+    {
+        do
+        {
+            cout << "ligne de la piece a bouger : \n"; cin >> xd;
+            cout << "colonne de la piece a bouger : \n"; cin >> yd;
+        }
+        while( p->Getplateau(xd,yd).Getpiece() == NULL );
+
+        cout << "ligne ou deplacer la piece : \n"; cin >> xf;
+        cout << "colonne ou deplacer la piece : \n"; cin >> yf;
+    }
+
 
 
 
