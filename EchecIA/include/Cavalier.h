@@ -1,7 +1,7 @@
 #ifndef CAVALIER_H
 #define CAVALIER_H
 
-#include <Piece.h>
+#include "Piece.h"
 
 
 class Cavalier : public Piece

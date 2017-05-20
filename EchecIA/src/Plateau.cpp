@@ -96,7 +96,7 @@ int main()
     int yd;
     int xf;
     int yf;
-    int b=1;//servira plus tard de booléen de test de fin du jeu
+    int b=1;//servira plus tard de boolean de test de fin du jeu
     p->Afficher();
 
     while(b)
@@ -117,7 +117,7 @@ int main()
 
         p->DeplacerPiece(xd, yd, xf, yf);
         p->Afficher();
-        //Attention, il manque les vérifications de l'équipe pour la sélection du pion !!!!
+        //Attention, il manque les vï¿½rifications de l'ï¿½quipe pour la sï¿½lection du pion !!!!
     }
     return 0;
 }

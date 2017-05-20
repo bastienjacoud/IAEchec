@@ -5,7 +5,7 @@
 #ifndef ECHECIA_FOU_H
 #define ECHECIA_FOU_H
 
-#include <Piece.h>
+#include "Piece.h"
 
 class Fou : public Piece
 {
