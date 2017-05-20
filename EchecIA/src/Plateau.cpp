@@ -117,7 +117,7 @@ int main()
 
         p->DeplacerPiece(xd, yd, xf, yf);
         p->Afficher();
-        //Attention, il manque les v�rifications de l'�quipe pour la s�lection du pion !!!!
+        //Attention, il manque les verifications de l'equipe pour la selection du pion !!!!
     }
     return 0;
 }
