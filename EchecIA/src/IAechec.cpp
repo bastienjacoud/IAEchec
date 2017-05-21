@@ -22,39 +22,18 @@ int minCalc(char[3][3], char, int);
 void series(char[3][3], int&, int&, int, char);
 Plateau p;
 
-char TestFin(char grille[3][3])
-{
+char TestFin(char grille[3][3]) {
     //la partie se termine lorsque le roi adverse est prit ou en echec et mat
     //Lignes et colonnes
-
-    char c;
-    for(int i = 0; i < 3; i++)
-    {
-        c = grille[i][0];
-        if((c != '_') && (grille[i][1] == c) && (grille[i][2] == c))
-            return c;
-        c = grille[0][i];
-        if((c != '_') && (grille[1][i] == c) && (grille[2][i] == c))
-            return c;
+    int i = p.getPiecesPrisent.size();                //PiecesPrisent = ArrayList des pieces qui se font prendre
+    if (p.getPiecesPrisent().get(i) == R1) {     //Les pieces sont nommées differemment en fonction de leur couleur (R1 couleur 1...)
+        return 2;
     }
-    //Diagonales
-    c = grille[0][0];
-    if((c != '_') && (grille[1][1] == c) && (grille[2][2] == c))
-        return c;
-    c = grille[0][2];
-    if((c != '_') && (grille[1][1] == c) && (grille[2][0] == c))
-        return c;
-    //Si on arrive là, on vérifie si le tableau est plein
-    for(int i = 0; i < 3; i++)
-    {
-        for(int j = 0; j < 3; j++)
-        {
-            if(grille[i][j] == '_')
-                return '_';
-        }
+    if (p.getPiecesPrisent().get(i) == R2) {
+        return 1;
     }
-    return ' ';
 }
+
 
 /*
 void Jouer(char grille[3][3], char c, int d)
@@ -94,13 +73,22 @@ void Jouer(char grille[3][3], char c, int d)
 
 int nbrPions(char grille[3][3])
 {
-    int nbr = 0;
+    int x = 0;
+    for(int i=0; i<8; i++)
+        for(int j=0;j<8;j++)
+        {
+            if(p.Getplateau(i,j) != '_'){
+                x++;
+            }
+        }
+/*    int nbr = 0;
     for(int i = 0; i < 3; i++)
     {
         for(int j = 0; j < 3; j++)
             nbr += (grille[i][j] != '_');
     }
     return nbr;
+*/
 }
 
 void series(char grille[3][3], int &serieJ1, int &serieJ2, int n, char c)//n le nombre de pions de la série
