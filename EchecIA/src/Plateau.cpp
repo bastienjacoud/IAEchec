@@ -72,21 +72,30 @@ void Plateau::Afficher()
     }
 }
 
-void Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)        //Fonction pour prendre une piece adverse
+int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)        //Fonction pour prendre une piece adverse
 {
-    this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Getpiece() );
-    //
+    if(this->Getplateau(xarrivee, yarrivee).Getpiece()->GetCouleur() != this->Getplateau(xdep, ydep).Getpiece()->GetCouleur())
+    {
+        this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
+        return 1;
+    }
+    else
+    {
+        cout<<"Impossible de déplacer la pièce";
+        return 0;
+    }
 }
 
-void Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
+int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
 {
-    if(this->Getplateau(xarrivee, yarrivee).Getpiece() == NULL)
+    if(this->Getplateau(xarrivee, yarrivee).Getpiece() == NULL)//Si on bouge sur une case vide
     {
-        this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Getpiece() );
+        this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
+        return 1;
     }
 
     else
-        this->prendrePiece(xdep, ydep, xarrivee, yarrivee);
+        return this->prendrePiece(xdep, ydep, xarrivee, yarrivee);
 }
 
 int main()
@@ -96,26 +105,38 @@ int main()
     int yd;
     int xf;
     int yf;
+    int joueurcourant=1;
     int b=1;//servira plus tard de booléen de test de fin du jeu
     p->Afficher();
 
     while(b)
     {
-        do
+        cout<<"C'est au joueur "<<joueurcourant<<" de jouer."<<endl;
+
+        cout << "ligne de la piece a bouger : \n"; cin >> xd;
+        cout << "colonne de la piece a bouger : \n"; cin >> yd;
+        while((xd>=8 || xd<0 || yd>=8 || yd<0) || p->Getplateau(xd,yd).Getpiece() == NULL || joueurcourant != p->Getplateau(xd,yd).Getpiece()->GetCouleur())
         {
+            cout<< "Coordonnées de la pièce à déplacer invalides. Veuillez réessayer."<<endl;
             cout << "ligne de la piece a bouger : \n"; cin >> xd;
             cout << "colonne de la piece a bouger : \n"; cin >> yd;
         }
-        while( p->Getplateau(xd,yd).Getpiece() == NULL );
 
-        do
+
+        cout << "ligne ou deplacer la piece : \n"; cin >> xf;
+        cout << "colonne ou deplacer la piece : \n"; cin >> yf;
+        while((xf>=8 || xf<0 || yf>=8 || yf<0) || (p->DeplacerPiece(xd, yd, xf, yf) ==0))
         {
+            cout<< "Coordonnées de la case d'arrivée invalides. Veuillez réessayer."<<endl;
             cout << "ligne ou deplacer la piece : \n"; cin >> xf;
             cout << "colonne ou deplacer la piece : \n"; cin >> yf;
         }
-        while(xf>=8 && xf<0 && yf>=8 && yf<0);
 
-        p->DeplacerPiece(xd, yd, xf, yf);
+        if(joueurcourant == 1)
+            joueurcourant = 2;
+        else if(joueurcourant == 2)
+            joueurcourant = 1;
+
         p->Afficher();
         //Attention, il manque les vérifications de l'équipe pour la sélection du pion !!!!
     }

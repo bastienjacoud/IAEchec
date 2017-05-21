@@ -6,7 +6,7 @@ using namespace std;
 
 Case::Case()
 {
-    this->m_piece = new Piece();
+    this->m_piece = NULL;
     //ctor
 }
 
@@ -21,6 +21,13 @@ void Case::Afficher()
         cout<<" _ ";
     else
         m_piece->Afficher();
+}
+
+Piece* Case::Move()
+{
+    Piece *p = m_piece;
+    m_piece = NULL;
+    return p;
 }
 
 void Case::ChangePiece(Piece* p)

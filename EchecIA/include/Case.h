@@ -14,6 +14,7 @@ class Case
         Case();
         virtual ~Case();
         Piece* Getpiece() { return m_piece; }
+        Piece* Move();
         void Setpiece(Piece* val) { m_piece = val; }
         void Afficher();
         void ChangePiece(Piece* p);
