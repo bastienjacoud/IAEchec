@@ -22,15 +22,18 @@ int minCalc(char[3][3], char, int);
 void series(char[3][3], int&, int&, int, char);
 Plateau p;
 
-char TestFin(char grille[3][3]) {
+char TestFin(Plateau pt) {
     //la partie se termine lorsque le roi adverse est prit ou en echec et mat
     //Lignes et colonnes
-    int i = p.getPiecesPrisent.size();                //PiecesPrisent = ArrayList des pieces qui se font prendre
-    if (p.getPiecesPrisent().get(i) == R1) {     //Les pieces sont nommées differemment en fonction de leur couleur (R1 couleur 1...)
+    int i = pt.getPiecesPrisent.size();                //PiecesPrisent = ArrayList des pieces qui se font prendre
+    if (pt.getPiecesPrisent().get(i) == R1) {     //Les pieces sont nommées differemment en fonction de leur couleur (R1 couleur 1...)
         return 2;
     }
-    if (p.getPiecesPrisent().get(i) == R2) {
+    if (pt.getPiecesPrisent().get(i) == R2) {
         return 1;
+    }
+    else{
+        return ('_');
     }
 }
 
@@ -71,24 +74,16 @@ void Jouer(char grille[3][3], char c, int d)
 
 //Fonctions de l'IA
 
-int nbrPions(char grille[3][3])
+int nbrPions(Plateau pt)
 {
     int x = 0;
     for(int i=0; i<8; i++)
         for(int j=0;j<8;j++)
         {
-            if(p.Getplateau(i,j) != '_'){
+            if(pt.Getplateau(i,j).Getpiece() != NULL){
                 x++;
             }
         }
-/*    int nbr = 0;
-    for(int i = 0; i < 3; i++)
-    {
-        for(int j = 0; j < 3; j++)
-            nbr += (grille[i][j] != '_');
-    }
-    return nbr;
-*/
 }
 
 void series(char grille[3][3], int &serieJ1, int &serieJ2, int n, char c)//n le nombre de pions de la série
@@ -186,21 +181,21 @@ void series(char grille[3][3], int &serieJ1, int &serieJ2, int n, char c)//n le 
 
 }
 
-int evaluation(char grille[3][3], char c)
+int evaluation(Plateau pt, char c)
 {
     char t;
     //si partie finie
-    if((t = TestFin(grille)) != '_')
+    if((t = TestFin(pt)) != '_')
     {
         if(t == c)
-            return (1000 - nbrPions(grille));
+            return (1000 - nbrPions(pt));
         if(t == ' ')
             return 0;
-        return (nbrPions(grille) - 1000);
+        return (nbrPions(pt) - 1000);
     }
 
     int serieJ1, serieJ2;
-    series(grille, serieJ1, serieJ2, 2, c);
+ //   series(grille, serieJ1, serieJ2, 2, c);
     return (serieJ1 - serieJ2);
 }
 
