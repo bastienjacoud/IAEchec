@@ -20,5 +20,13 @@ Roi::~Roi()
 
 void Roi::Afficher()
 {
-    cout<<" R ";
+    cout<<" R"<<GetCouleur()<<" ";
+}
+
+int Roi::DeplacementOK(int depX, int depY, int tab[], int* tabl)
+{
+    if(((depX == 1) || (depX == 0)) && ((depY == 1) || (depY == 0)))
+        return 1;
+    else
+        return 0;
 }

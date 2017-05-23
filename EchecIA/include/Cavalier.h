@@ -1,7 +1,7 @@
 #ifndef CAVALIER_H
 #define CAVALIER_H
 
-#include <Piece.h>
+#include "Piece.h"
 
 
 class Cavalier : public Piece
@@ -11,6 +11,7 @@ class Cavalier : public Piece
         Cavalier(int couleur);
         virtual ~Cavalier();
         virtual void Afficher();
+        virtual int DeplacementOK(int depX, int depY, int tab[], int* tabl);
     protected:
     private:
 };

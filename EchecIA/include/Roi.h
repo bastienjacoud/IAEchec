@@ -1,7 +1,7 @@
 #ifndef ROI_H
 #define ROI_H
 
-#include <Piece.h>
+#include "Piece.h"
 
 
 class Roi : public Piece
@@ -11,6 +11,7 @@ class Roi : public Piece
         Roi(int couleur);
         virtual ~Roi();
         virtual void Afficher();
+        virtual int DeplacementOK(int depX, int depY, int tab[], int* tabl);
     protected:
     private:
 };

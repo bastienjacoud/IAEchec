@@ -18,7 +18,7 @@ Case::~Case()
 void Case::Afficher()
 {
     if(this->Getpiece() == NULL)
-        cout<<" _ ";
+        cout<<" __ ";
     else
         m_piece->Afficher();
 }

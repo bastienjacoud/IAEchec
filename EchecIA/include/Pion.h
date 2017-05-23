@@ -10,6 +10,8 @@ class Pion : public Piece
         Pion(int couleur);
         virtual ~Pion();
         virtual void Afficher();
-        bool DeplacementOK(int depX, int depY);
+        virtual int DeplacementOK(int depX, int depY, int tab[], int* tabl);
+    private:
+        int premierCoup;//vaut 1 si c'est le premier coup, 0 sinon
 };
 #endif //ECHECIA_PION_H

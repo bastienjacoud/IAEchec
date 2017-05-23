@@ -15,6 +15,7 @@ class Plateau
         void Afficher();
         int prendrePiece(int xdep, int ydep, int xarrive, int yarrive);
         int DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee);
+        int TestFinJeu();
     protected:
     private:
         Case* m_plateau[8][8];

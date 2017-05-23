@@ -24,17 +24,69 @@ Fou::~Fou()
 }
 
 
-bool Fou::DeplacementOK(int depX, int depY)
+int Fou::DeplacementOK(int depX, int depY, int tab[], int* tabl)
 {
-    for(int i=-7; i<8; i++) {
-        if (((depX == i) && (depY == i)) or ((depX == i) && (depY == -i)))
-            return true;
+    *tabl = 0;
+    int j=0;
+    if(depX == depY)
+    {
+        if(depX>0)
+        {
+            for(int i=1;i<depX;i++)
+            {
+                tab[j] = i;
+                tab[j+1] = i;
+                *tabl += 2;
+                j+=2;
+            }
+        }
+        if(depX<0)
+        {
+            for(int i=-1;i>depX;i--)
+            {
+                tab[j] = i;
+                tab[j+1] = i;
+                *tabl += 2;
+                j+=2;
+            }
+        }
+        return 1;
     }
 
-    return false;
+    else if(depX == -depY)
+    {
+        if(depX>0)
+        {
+            for(int i=1;i<depX;i++)
+            {
+                tab[j] = i;
+                tab[j+1] = -i;
+                *tabl += 2;
+                j+=2;
+            }
+        }
+        if(depX<0)
+        {
+            for(int i=-1;i>depX;i--)
+            {
+                tab[j] = i;
+                tab[j+1] = -i;
+                *tabl += 2;
+                j+=2;
+            }
+        }
+        return 1;
+    }
+    else
+    {
+        tab = NULL;
+        *tabl = 0;
+        return 0;
+    }
+
 }
 
 void Fou::Afficher()
 {
-    cout<<" F ";
+    cout<<" F"<<GetCouleur()<<" ";
 }

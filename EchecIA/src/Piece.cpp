@@ -31,6 +31,13 @@ void Piece::SetCouleur(int couleur)
 
 void Piece::Afficher()
 {
-    cout<<" _ ";
+    cout<<" __ ";
+}
+
+int Piece::DeplacementOK(int depX, int depY, int tab[], int* tabl)
+{
+    tab = NULL;
+    *tabl = 0;
+    return 1;
 }
 

@@ -19,17 +19,69 @@ Tour::~Tour()
     //dtor
 }
 
-bool Tour::DeplacementOK(int depX, int depY)
+int Tour::DeplacementOK(int depX, int depY, int tab[], int* tabl)
 {
-    for(int i=-7; i<8; i++) {
-        if (((depX == i) && (depY == 0)) or ((depX == 0) && (depY == i)))
-            return true;
+    int j=0;
+    *tabl = 0;
+    if(depX == 0)
+    {
+        if(depY>0)
+        {
+            for(int i=1;i<depY;i++)
+            {
+                tab[j] = 0;
+                tab[j+1] = i;
+                *tabl +=2;
+                j+=2;
+            }
+        }
+        else if(depY<0)
+        {
+            for(int i=-1;i>depY;i--)
+            {
+                tab[j] = 0;
+                tab[j+1] = i;
+                *tabl +=2;
+                j+=2;
+            }
+        }
+        return 1;
     }
 
-    return false;
+    else if(depY == 0)
+    {
+        if(depX>0)
+        {
+            for(int i=1;i<depX;i++)
+            {
+                tab[j] = 0;
+                tab[j+1] = i;
+                *tabl +=2;
+                j+=2;
+            }
+        }
+        else if(depX<0)
+        {
+            for(int i=-1;i>depX;i--)
+            {
+                tab[j] = 0;
+                tab[j+1] = i;
+                *tabl +=2;
+                j+=2;
+            }
+        }
+        return 1;
+    }
+    else
+    {
+        tab = NULL;
+        *tabl = 0;
+        return 0;
+    }
+
 }
 
 void Tour::Afficher()
 {
-    cout<<" T ";
+    cout<<" T"<<GetCouleur()<<" ";
 }
