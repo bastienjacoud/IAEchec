@@ -23,8 +23,8 @@ Plateau::Plateau()
     this->m_plateau[0][2]->Setpiece( new Fou(1) );
     this->m_plateau[0][4]->Setpiece( new Roi(1) );
     this->m_plateau[0][6]->Setpiece( new Cavalier(1) );
-    this->m_plateau[1][1]->Setpiece( new Pion(1) );
-    this->m_plateau[1][3]->Setpiece( new Pion(1) );
+    //this->m_plateau[1][1]->Setpiece( new Pion(1) );
+    //this->m_plateau[1][3]->Setpiece( new Pion(1) );
     this->m_plateau[1][5]->Setpiece( new Pion(1) );
     this->m_plateau[1][7]->Setpiece( new Pion(1) );
     //this->m_plateau[2][0]->Setpiece( new Pion(1) );
