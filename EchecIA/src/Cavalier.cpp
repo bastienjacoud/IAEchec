@@ -33,7 +33,8 @@ int Cavalier::DeplacementOK(int depX, int depY, int tab[], int* tabl)
 {
     tab = NULL;
     *tabl = 0;
-    if((depX == 2 && depY == 1) || (depX == 2 && depY == - 1) || (depX == -2 && depY == 1) || (depX == -2 && depY == -1))
+    if((depX == 2 && depY == 1) || (depX == 2 && depY == - 1) || (depX == -2 && depY == 1) || (depX == -2 && depY == -1)
+            || (depX == 1 && depY == 2) || (depX == 1 && depY == -2) || (depX == -1 && depY == 2) || (depX == -1 && depY == -2))
         return 1;
     else
         return 0;

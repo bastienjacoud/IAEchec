@@ -27,9 +27,9 @@ Plateau::Plateau()
     this->m_plateau[1][3]->Setpiece( new Pion(1) );
     this->m_plateau[1][5]->Setpiece( new Pion(1) );
     this->m_plateau[1][7]->Setpiece( new Pion(1) );
-    this->m_plateau[2][0]->Setpiece( new Pion(1) );
+    //this->m_plateau[2][0]->Setpiece( new Pion(1) );
     this->m_plateau[2][2]->Setpiece( new Pion(1) );
-    this->m_plateau[2][4]->Setpiece( new Pion(1) );
+    //this->m_plateau[2][4]->Setpiece( new Pion(1) );
     this->m_plateau[2][6]->Setpiece( new Pion(1) );
 
 
@@ -87,7 +87,7 @@ int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonct
         int tabt;
         if(this->Getplateau(xdep, ydep).Getpiece()->PriseOK(xarrivee - xdep,yarrivee - ydep, tab, &tabt) == 1)
         {
-            if(tabt == 0)//Si pas de case entre case arrivée et case départ
+            if(tabt == 0)//Si pas de case entre case arrivï¿½e et case dï¿½part
             {
                 this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
                 return 1;
@@ -98,7 +98,7 @@ int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonct
                 int b=1;
                 for(int i=0;i<tabt;i+=2)
                 {
-                    if(this->Getplateau(tab[i+1] + ydep, tab[i] + xdep).Getpiece() != NULL)//S'il y a une pièce entre la case de départ et d'arrivé
+                    if(this->Getplateau(tab[i+1] + ydep, tab[i] + xdep).Getpiece() != NULL)//S'il y a une piï¿½ce entre la case de dï¿½part et d'arrivï¿½
                     {
                         cout<<tab[i] + xdep<<" "<<tab[i+1] + ydep<<endl;
                         b=0;
@@ -138,7 +138,7 @@ int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
         int tabt;
         if(this->Getplateau(xdep, ydep).Getpiece()->DeplacementOK(xarrivee - xdep,yarrivee - ydep, tab, &tabt) == 1)
         {
-            if(tabt == 0)//Si pas de case entre case arrivée et case départ
+            if(tabt == 0)//Si pas de case entre case arrivï¿½e et case dï¿½part
             {
                 this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
                 this->Getplateau(xdep, ydep).Setpiece(NULL);
@@ -149,7 +149,7 @@ int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
                 int b=1;
                 for(int i=0;i<tabt;i+=2)
                 {
-                    if(this->Getplateau(tab[i+1] + ydep, tab[i] + xdep).Getpiece() != NULL)//S'il y a une pièce entre la case de départ et d'arrivé
+                    if(this->Getplateau(tab[i+1] + ydep, tab[i] + xdep).Getpiece() != NULL)//S'il y a une piï¿½ce entre la case de dï¿½part et d'arrivï¿½
                         b=0;
                 }
                 if(b==1)
@@ -234,11 +234,11 @@ int main()
             cout << "colonne ou deplacer la piece : \n"; cin >> yf;yf--;
         }
 
-        if(joueurcourant == 1)
+ /*       if(joueurcourant == 1)
             joueurcourant = 2;
         else if(joueurcourant == 2)
             joueurcourant = 1;
-
+*/
         p->Afficher();
     }
     return 0;
