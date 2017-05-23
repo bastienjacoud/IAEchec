@@ -81,6 +81,11 @@ int Tour::DeplacementOK(int depX, int depY, int tab[], int* tabl)
 
 }
 
+int Tour::PriseOK(int depX, int depY, int tab[], int* tabl)
+{
+    return Tour::DeplacementOK(depX, depY, tab, tabl);
+}
+
 void Tour::Afficher()
 {
     cout<<" T"<<GetCouleur()<<" ";

@@ -34,3 +34,8 @@ int Cavalier::DeplacementOK(int depX, int depY, int tab[], int* tabl)
     else
         return 0;
 }
+
+int Cavalier::PriseOK(int depX, int depY, int tab[], int* tabl)
+{
+    return Cavalier::DeplacementOK(depX, depY, tab, tabl);
+}

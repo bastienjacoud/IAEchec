@@ -86,6 +86,11 @@ int Fou::DeplacementOK(int depX, int depY, int tab[], int* tabl)
 
 }
 
+int Fou::PriseOK(int depX, int depY, int tab[], int* tabl)
+{
+    return Fou::DeplacementOK(depX, depY, tab, tabl);
+}
+
 void Fou::Afficher()
 {
     cout<<" F"<<GetCouleur()<<" ";

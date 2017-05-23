@@ -12,6 +12,7 @@ class Roi : public Piece
         virtual ~Roi();
         virtual void Afficher();
         virtual int DeplacementOK(int depX, int depY, int tab[], int* tabl);
+        virtual int PriseOK(int depX, int depY, int tab[], int* tabl);
     protected:
     private:
 };

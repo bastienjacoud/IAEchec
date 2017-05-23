@@ -17,7 +17,7 @@ Joueur 1 'X'
 Joueur 2 'O'
 Joueur commence
 */
-
+/*
 int minCalc(char[3][3], char, int);
 void series(char[3][3], int&, int&, int, char);
 Plateau p;
@@ -73,7 +73,7 @@ void Jouer(char grille[3][3], char c, int d)
  */
 
 //Fonctions de l'IA
-
+/*
 int nbrPions(Plateau pt)
 {
     int x = 0;
@@ -215,7 +215,7 @@ int maxCalc(char grille[3][3],char c, int profondeur)
                 grille[i][j] = c;
                 int tmp = minCalc(grille, c, profondeur - 1);
 
-                if((tmp > maximum)/* || ((tmp == maximum) && ((rand() % 2) == 0))*/)
+                if((tmp > maximum) || ((tmp == maximum) && ((rand() % 2) == 0)))
                     maximum = tmp;
                 grille[i][j] = '_';
             }
@@ -240,7 +240,7 @@ int minCalc(char grille[3][3], char c, int profondeur)
                 grille[i][j] = (c == 'X') ? 'O' : 'X';
                 int tmp = maxCalc(grille, c, profondeur - 1);
 
-                if((tmp < minimum)/* || ((tmp == minimum) && ((rand() % 2) == 0))*/)
+                if((tmp < minimum) || ((tmp == minimum) && ((rand() % 2) == 0)))
                     minimum = tmp;
                 grille[i][j] = '_';
             }
@@ -266,7 +266,7 @@ void IARecJouer(char grille[3][3], char c, int difficulte)
             {
                 grille[i][j] = c;
                 int tmp = minCalc(grille, c, difficulte - 1);
-                if((tmp > maximum)/* || ((tmp == maximum) && ((rand() % 2) == 0))*/)
+                if((tmp > maximum) || ((tmp == maximum) && ((rand() % 2) == 0)))
                 {
                     maximum = tmp;
                     maxi = i;
@@ -278,6 +278,7 @@ void IARecJouer(char grille[3][3], char c, int difficulte)
     }
     grille[maxi][maxj] = c;
 }
+*/
 
 /*
 void IAIteJouer(char grille[3][3], char c, int d)

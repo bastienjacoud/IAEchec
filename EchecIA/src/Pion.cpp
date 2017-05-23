@@ -115,6 +115,11 @@ int Pion::DeplacementOK(int depX, int depY, int tab[], int* tabl)
     //return 0;
 }
 
+int Pion::PriseOK(int depX, int depY, int tab[], int* tabl)
+{
+    return Pion::DeplacementOK(depX, depY, tab, tabl);
+}
+
 void Pion::Afficher()
 {
     cout<<" P"<<GetCouleur()<<" ";

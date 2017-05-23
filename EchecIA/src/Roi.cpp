@@ -30,3 +30,8 @@ int Roi::DeplacementOK(int depX, int depY, int tab[], int* tabl)
     else
         return 0;
 }
+
+int Roi::PriseOK(int depX, int depY, int tab[], int* tabl)
+{
+    return Roi::DeplacementOK(depX, depY, tab, tabl);
+}

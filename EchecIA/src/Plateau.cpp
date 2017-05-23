@@ -10,7 +10,6 @@ Plateau::Plateau()
         for(int j=0;j<8;j++)
         {
             this->m_plateau[i][j] = new Case();
-            //this->m_plateau[i][j]->Setpiece(new Tour());
         }
 
     //placement des pions noirs
@@ -75,39 +74,29 @@ void Plateau::Afficher()
 
 int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonction pour prendre une piece adverse
 {
-    //A fini
     if(this->Getplateau(xarrivee, yarrivee).Getpiece()->GetCouleur() != this->Getplateau(xdep, ydep).Getpiece()->GetCouleur())
-    {
-        this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
-        return 1;
-    }
-    else
-    {
-        //cout<<"Impossible de déplacer la pièce ici."<<endl;
-        return 0;
-    }
-}
-
-int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
-{
-    if(this->Getplateau(xarrivee, yarrivee).Getpiece() == NULL)//Si on bouge sur une case vide
     {
         int tab[8];
         int tabt;
-        if(this->Getplateau(xdep, ydep).Getpiece()->DeplacementOK(xarrivee - xdep,yarrivee - ydep, tab, &tabt) == 1)
+        if(this->Getplateau(xdep, ydep).Getpiece()->PriseOK(xarrivee - xdep,yarrivee - ydep, tab, &tabt) == 1)
         {
-            if(tab == NULL)//Si pas de case entre case arrivée et case départ
+            if(tabt == 0)//Si pas de case entre case arrivée et case départ
             {
                 this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
                 return 1;
             }
             else
+
             {
                 int b=1;
                 for(int i=0;i<tabt;i+=2)
                 {
-                    if(this->Getplateau(tab[i] + xdep, tab[i+1] + ydep).Getpiece() != NULL)//S'il y a une pièce entre la case de départ et d'arrivé
+                    if(this->Getplateau(tab[i+1] + ydep, tab[i] + xdep).Getpiece() != NULL)//S'il y a une pièce entre la case de départ et d'arrivé
+                    {
+                        cout<<tab[i] + xdep<<" "<<tab[i+1] + ydep<<endl;
                         b=0;
+                    }
+
                 }
                 if(b==1)
                 {
@@ -125,10 +114,59 @@ int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
         {
             return 0;
         }
+    }
+    else
+    {
+        //cout<<"Impossible de déplacer la pièce ici."<<endl;
+        return 0;
+    }
+    return 0;
+}
+
+int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
+{
+    if(this->Getplateau(xarrivee, yarrivee).Getpiece() == NULL)//Si on bouge sur une case vide
+    {
+        int tab[8];
+        int tabt;
+        if(this->Getplateau(xdep, ydep).Getpiece()->DeplacementOK(xarrivee - xdep,yarrivee - ydep, tab, &tabt) == 1)
+        {
+            if(tabt == 0)//Si pas de case entre case arrivée et case départ
+            {
+                this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
+                this->Getplateau(xdep, ydep).Setpiece(NULL);
+                return 1;
+            }
+            else
+            {
+                int b=1;
+                for(int i=0;i<tabt;i+=2)
+                {
+                    if(this->Getplateau(tab[i+1] + ydep, tab[i] + xdep).Getpiece() != NULL)//S'il y a une pièce entre la case de départ et d'arrivé
+                        b=0;
+                }
+                if(b==1)
+                {
+                    this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
+                    this->Getplateau(xdep, ydep).Setpiece(NULL);
+                    return 1;
+                }
+                else if(b==0)
+                {
+                    return 0;
+                }
+            }
+
+        }
+        else
+        {
+            return 0;
+        }
 
     }
     else
         return this->prendrePiece(xdep, ydep, xarrivee, yarrivee);
+    return 0;
 }
 
 int Plateau::TestFinJeu()
@@ -170,12 +208,12 @@ int main()
             cout << "ligne ou deplacer la piece : \n"; cin >> xf;xf--;
             cout << "colonne ou deplacer la piece : \n"; cin >> yf;yf--;
         }
-        /*
+
         if(joueurcourant == 1)
             joueurcourant = 2;
         else if(joueurcourant == 2)
             joueurcourant = 1;
-        */
+
         p->Afficher();
     }
     return 0;

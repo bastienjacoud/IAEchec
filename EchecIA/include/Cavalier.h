@@ -12,6 +12,7 @@ class Cavalier : public Piece
         virtual ~Cavalier();
         virtual void Afficher();
         virtual int DeplacementOK(int depX, int depY, int tab[], int* tabl);
+        virtual int PriseOK(int depX, int depY, int tab[], int* tabl);
     protected:
     private:
 };

@@ -14,6 +14,7 @@ class Fou : public Piece
         Fou(int couleur);
         virtual ~Fou();
         virtual int DeplacementOK(int depX, int depY, int tab[], int* tabl);
+        virtual int PriseOK(int depX, int depY, int tab[], int* tabl);
         virtual void Afficher();
     protected:
     private:
