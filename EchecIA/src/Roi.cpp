@@ -1,5 +1,9 @@
+//
+// Created by natjo on 23/05/2017.
+//
+
 #include<iostream>
-#include "Roi.h"
+#include "../include/Roi.h"
 
 using namespace std;
 
@@ -30,3 +34,6 @@ int Roi::DeplacementOK(int depX, int depY, int tab[], int* tabl)
     else
         return 0;
 }
+
+
+

@@ -11,6 +11,7 @@ class Tour : public Piece
         virtual ~Tour();
         virtual int DeplacementOK(int depX, int depY, int tab[], int* tabl);
         virtual void Afficher();
+        virtual char getType(){ return 'T';}
 };
 
 #endif //ECHECIA_TOUR_H

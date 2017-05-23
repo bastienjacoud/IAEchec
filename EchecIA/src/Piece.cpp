@@ -4,7 +4,7 @@
 
 using namespace std;
 
-//Constructeur par défaut
+//Constructeur par dï¿½faut
 Piece::Piece()
 {
     SetposX(-1);
@@ -12,7 +12,7 @@ Piece::Piece()
     SetCouleur(0);
 }
 
-//Constructeur prenant en chatge la couleur de l'équipe
+//Constructeur prenant en chatge la couleur de l'ï¿½quipe
 Piece::Piece(int couleur)
 {
     SetCouleur(couleur);
@@ -40,4 +40,5 @@ int Piece::DeplacementOK(int depX, int depY, int tab[], int* tabl)
     *tabl = 0;
     return 1;
 }
+
 

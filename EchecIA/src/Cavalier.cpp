@@ -1,9 +1,13 @@
+//
+// Created by natjo on 23/05/2017.
+//
+
 #include<iostream>
-#include "Cavalier.h"
+#include "../include/Cavalier.h"
 
 using namespace std;
 
-//Constructeur par défaut
+//Constructeur par dï¿½faut
 Cavalier::Cavalier()
 {
     //ctor

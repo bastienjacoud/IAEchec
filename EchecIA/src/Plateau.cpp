@@ -1,7 +1,13 @@
 #include<iostream>
+#include <vector>
 #include "../include/Plateau.h"
 
 using namespace std;
+
+
+vector<Piece> piecesPrisent;
+
+
 
 Plateau::Plateau()
 {
@@ -44,6 +50,7 @@ Plateau::Plateau()
 
 }
 
+
 Plateau::~Plateau()
 {
     //dtor
@@ -78,12 +85,13 @@ int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonct
     //A fini
     if(this->Getplateau(xarrivee, yarrivee).Getpiece()->GetCouleur() != this->Getplateau(xdep, ydep).Getpiece()->GetCouleur())
     {
+        piecesPrisent.push_back(*Getplateau(xarrivee, yarrivee).Getpiece());
         this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
         return 1;
     }
     else
     {
-        //cout<<"Impossible de déplacer la pièce ici."<<endl;
+        //cout<<"Impossible de dÃ©placer la piÃ¨ce ici."<<endl;
         return 0;
     }
 }
@@ -96,7 +104,7 @@ int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
         int tabt;
         if(this->Getplateau(xdep, ydep).Getpiece()->DeplacementOK(xarrivee - xdep,yarrivee - ydep, tab, &tabt) == 1)
         {
-            if(tab == NULL)//Si pas de case entre case arrivée et case départ
+            if(tab == NULL)//Si pas de case entre case arrivÃ©e et case dÃ©part
             {
                 this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
                 return 1;
@@ -106,7 +114,7 @@ int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
                 int b=1;
                 for(int i=0;i<tabt;i+=2)
                 {
-                    if(this->Getplateau(tab[i] + xdep, tab[i+1] + ydep).Getpiece() != NULL)//S'il y a une pièce entre la case de départ et d'arrivé
+                    if(this->Getplateau(tab[i] + xdep, tab[i+1] + ydep).Getpiece() != NULL)//S'il y a une piÃ¨ce entre la case de dÃ©part et d'arrivÃ©e
                         b=0;
                 }
                 if(b==1)
@@ -133,8 +141,24 @@ int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
 
 int Plateau::TestFinJeu()
 {
-    //A faire
-    return 1;
+    //la partie se termine lorsque le roi adverse est prit ou en echec et mat
+    int n = piecesPrisent.size();
+    if(n==0)
+        return 0;
+    else if (piecesPrisent[n-1].getType() == 'R')
+    {
+        if (piecesPrisent[n-1].GetCouleur() == 1)
+        { return 2;}
+        if (piecesPrisent[n-1].GetCouleur() == 2)
+        { return 1;}
+        else
+        { return 0;}
+    }
+    else
+    {
+        return 0;
+    }
+
 }
 
 int main()
@@ -145,10 +169,12 @@ int main()
     int xf;
     int yf;
     int joueurcourant=1;
-    //int b=1;//servira plus tard de booléen de test de fin du jeu
+    //int b=1;//servira plus tard de boolï¿½en de test de fin du jeu
     p->Afficher();
 
-    while(p->TestFinJeu() == 1)
+
+    while(p->TestFinJeu() == 0)
+    //while(true)
     {
         cout<<"C'est au joueur "<<joueurcourant<<" de jouer."<<endl;
 

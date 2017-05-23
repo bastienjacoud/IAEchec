@@ -11,6 +11,7 @@ class Pion : public Piece
         virtual ~Pion();
         virtual void Afficher();
         virtual int DeplacementOK(int depX, int depY, int tab[], int* tabl);
+        virtual char getType(){ return 'P';}
     private:
         int premierCoup;//vaut 1 si c'est le premier coup, 0 sinon
 };

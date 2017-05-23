@@ -15,6 +15,7 @@ class Fou : public Piece
         virtual ~Fou();
         virtual int DeplacementOK(int depX, int depY, int tab[], int* tabl);
         virtual void Afficher();
+        virtual char getType(){ return 'F';}
     protected:
     private:
 };
