@@ -17,6 +17,7 @@ class Piece
         virtual void Afficher();
         virtual int DeplacementOK(int depX, int depY, int tab[], int* tabl);
         virtual int PriseOK(int depX, int depY, int tab[], int* tabl);
+        virtual char getType(){return 'P';}
     protected:
         int m_posX;
         int m_posY;

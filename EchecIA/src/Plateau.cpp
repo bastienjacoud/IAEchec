@@ -1,7 +1,13 @@
 #include<iostream>
+#include <vector>
 #include "../include/Plateau.h"
 
 using namespace std;
+
+
+vector<Piece> piecesPrisent;
+
+
 
 Plateau::Plateau()
 {
@@ -42,6 +48,7 @@ Plateau::Plateau()
     this->m_plateau[5][6]->Setpiece( new Pion(2) );
 
 }
+
 
 Plateau::~Plateau()
 {
@@ -117,7 +124,7 @@ int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonct
     }
     else
     {
-        //cout<<"Impossible de déplacer la pièce ici."<<endl;
+        //cout<<"Impossible de dÃ©placer la piÃ¨ce ici."<<endl;
         return 0;
     }
     return 0;
@@ -171,8 +178,24 @@ int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
 
 int Plateau::TestFinJeu()
 {
-    //A faire
-    return 1;
+    //la partie se termine lorsque le roi adverse est prit ou en echec et mat
+    int n = piecesPrisent.size();
+    if(n==0)
+        return 0;
+    else if (piecesPrisent[n-1].getType() == 'R')
+    {
+        if (piecesPrisent[n-1].GetCouleur() == 1)
+        { return 2;}
+        if (piecesPrisent[n-1].GetCouleur() == 2)
+        { return 1;}
+        else
+        { return 0;}
+    }
+    else
+    {
+        return 0;
+    }
+
 }
 
 int main()
@@ -183,10 +206,12 @@ int main()
     int xf;
     int yf;
     int joueurcourant=1;
-    //int b=1;//servira plus tard de booléen de test de fin du jeu
+    //int b=1;//servira plus tard de boolï¿½en de test de fin du jeu
     p->Afficher();
 
-    while(p->TestFinJeu() == 1)
+
+    while(p->TestFinJeu() == 0)
+    //while(true)
     {
         cout<<"C'est au joueur "<<joueurcourant<<" de jouer."<<endl;
 
