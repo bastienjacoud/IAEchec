@@ -19,8 +19,10 @@ Tour::~Tour()
     //dtor
 }
 
-int Tour::DeplacementOK(int depX, int depY, int tab[], int* tabl)
+int Tour::DeplacementOK(int depY, int depX, int tab[], int* tabl)//depY -> vertical, depX -> horizontal
 {
+    cout<<"depX : "<<depX<<endl;
+    cout<<"depY : "<<depY<<endl;
     int j=0;
     *tabl = 0;
     if(depX == 0)

@@ -22,15 +22,15 @@
 
 1495569412 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
 
-1495569175 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
+1495571339 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
 	<iostream>
-	<vector>
 	"../include/Plateau.h"
 
-1495562612 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
+1495571276 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
+	<vector>
 	"Case.h"
 
-1495564752 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\tour.cpp
+1495571904 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\tour.cpp
 	<array>
 	<iostream>
 	"../include/Tour.h"
@@ -47,7 +47,7 @@
 1495569331 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\roi.h
 	"Piece.h"
 
-1495569116 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\tour.h
+1495569801 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\tour.h
 	"Piece.h"
 
 1495569116 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\cavalier.cpp

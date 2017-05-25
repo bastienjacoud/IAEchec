@@ -1,11 +1,7 @@
 #include<iostream>
-#include <vector>
 #include "../include/Plateau.h"
 
 using namespace std;
-
-
-vector<Piece> piecesPrisent;
 
 
 
@@ -27,7 +23,7 @@ Plateau::Plateau()
     this->m_plateau[1][3]->Setpiece( new Pion(1) );
     this->m_plateau[1][5]->Setpiece( new Pion(1) );
     this->m_plateau[1][7]->Setpiece( new Pion(1) );
-    this->m_plateau[2][0]->Setpiece( new Pion(1) );
+    //this->m_plateau[2][0]->Setpiece( new Pion(1) );
     this->m_plateau[2][2]->Setpiece( new Pion(1) );
     this->m_plateau[2][4]->Setpiece( new Pion(1) );
     this->m_plateau[2][6]->Setpiece( new Pion(1) );
@@ -46,6 +42,9 @@ Plateau::Plateau()
     this->m_plateau[5][2]->Setpiece( new Pion(2) );
     this->m_plateau[5][4]->Setpiece( new Pion(2) );
     this->m_plateau[5][6]->Setpiece( new Pion(2) );
+
+    for(int i=0;i<24;i++)
+        this->piecesPrisent[i] = NULL;
 
 }
 
@@ -132,6 +131,8 @@ int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonct
 
 int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
 {
+    //x -> lignes
+    //y colonnes
     if(this->Getplateau(xarrivee, yarrivee).Getpiece() == NULL)//Si on bouge sur une case vide
     {
         int tab[8];
@@ -146,6 +147,7 @@ int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
             }
             else
             {
+                //cout<<"test"<<endl;
                 int b=1;
                 for(int i=0;i<tabt;i+=2)
                 {
@@ -179,24 +181,23 @@ int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
 int Plateau::TestFinJeu()
 {
     //la partie se termine lorsque le roi adverse est prit ou en echec et mat
-    int n = piecesPrisent.size();
-    if(n==0)
-        return 0;
-    else if (piecesPrisent[n-1].getType() == 'R')
+    for(int i=0;i<24;i++)
     {
-        if (piecesPrisent[n-1].GetCouleur() == 1)
-        { return 2;}
-        if (piecesPrisent[n-1].GetCouleur() == 2)
-        { return 1;}
-        else
-        { return 0;}
+        if(piecesPrisent[i] == NULL)
+            return 0;
+        else if(piecesPrisent[i]->getType() == 'R')
+        {
+            if (piecesPrisent[i]->GetCouleur() == 1)
+                { return 2;}
+            if (piecesPrisent[i]->GetCouleur() == 2)
+                { return 1;}
+        }
     }
-    else
-    {
-        return 0;
-    }
+    return 0;
 
 }
+
+
 
 int main()
 {
@@ -233,12 +234,12 @@ int main()
             cout << "ligne ou deplacer la piece : \n"; cin >> xf;xf--;
             cout << "colonne ou deplacer la piece : \n"; cin >> yf;yf--;
         }
-
+        /*
         if(joueurcourant == 1)
             joueurcourant = 2;
         else if(joueurcourant == 2)
             joueurcourant = 1;
-
+        */
         p->Afficher();
     }
     return 0;

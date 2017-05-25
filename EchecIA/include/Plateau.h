@@ -1,6 +1,7 @@
 #ifndef PLATEAU_H
 #define PLATEAU_H
 
+#include <vector>
 #include "Case.h"
 
 class Plateau
@@ -9,7 +10,7 @@ class Plateau
         Plateau();
         virtual ~Plateau();
         int main();
-        Case& Getplateau(int i, int j) { return *m_plateau[i][j]; }
+        Case& Getplateau(int i, int j) { return *m_plateau[i][j]; }//ligne puis colonne
         void Setplateau(Case plateau[8][8]);
         void SetPiece(int i, int j, Piece* p);
         void Afficher();
@@ -19,6 +20,7 @@ class Plateau
     protected:
     private:
         Case* m_plateau[8][8];
+        Piece* piecesPrisent[24];
 };
 
 #endif // PLATEAU_H
