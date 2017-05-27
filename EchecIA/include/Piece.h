@@ -15,8 +15,8 @@ class Piece
         int GetCouleur() {return m_couleur;}
         void SetCouleur(int couleur);
         virtual void Afficher();
-        virtual int DeplacementOK(int depX, int depY, int tab[], int* tabl);
-        virtual int PriseOK(int depX, int depY, int tab[], int* tabl);
+        virtual int DeplacementOK(int depX, int depY, int tab[], int& tabl);
+        virtual int PriseOK(int depX, int depY, int tab[], int& tabl);
         virtual char getType(){return 'P';}
     protected:
         int m_posX;

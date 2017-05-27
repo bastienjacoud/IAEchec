@@ -34,14 +34,14 @@ void Piece::Afficher()
     cout<<" __ ";
 }
 
-int Piece::DeplacementOK(int depX, int depY, int tab[], int* tabl)
+int Piece::DeplacementOK(int depX, int depY, int tab[], int& tabl)
 {
     tab = NULL;
-    *tabl = 0;
+    tabl = 0;
     return 1;
 }
 
-int Piece::PriseOK(int depX, int depY, int tab[], int* tabl)
+int Piece::PriseOK(int depX, int depY, int tab[], int& tabl)
 {
     return Piece::DeplacementOK(depX, depY, tab, tabl);
 }

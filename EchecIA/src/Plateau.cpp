@@ -19,13 +19,13 @@ Plateau::Plateau()
     this->m_plateau[0][2]->Setpiece( new Fou(1) );
     this->m_plateau[0][4]->Setpiece( new Roi(1) );
     this->m_plateau[0][6]->Setpiece( new Cavalier(1) );
-    this->m_plateau[1][1]->Setpiece( new Pion(1) );
-    this->m_plateau[1][3]->Setpiece( new Pion(1) );
+    //this->m_plateau[1][1]->Setpiece( new Pion(1) );
+    //this->m_plateau[1][3]->Setpiece( new Pion(1) );
     this->m_plateau[1][5]->Setpiece( new Pion(1) );
     this->m_plateau[1][7]->Setpiece( new Pion(1) );
     //this->m_plateau[2][0]->Setpiece( new Pion(1) );
     this->m_plateau[2][2]->Setpiece( new Pion(1) );
-    this->m_plateau[2][4]->Setpiece( new Pion(1) );
+    //this->m_plateau[2][4]->Setpiece( new Pion(1) );
     this->m_plateau[2][6]->Setpiece( new Pion(1) );
 
 
@@ -82,24 +82,25 @@ int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonct
 {
     if(this->Getplateau(xarrivee, yarrivee).Getpiece()->GetCouleur() != this->Getplateau(xdep, ydep).Getpiece()->GetCouleur())
     {
-        int tab[8];
         int tabt;
-        if(this->Getplateau(xdep, ydep).Getpiece()->PriseOK(xarrivee - xdep,yarrivee - ydep, tab, &tabt) == 1)
+        int tab[16];
+        for(int i=0;i<16;i++)
+            tab[i] = 0;
+        if(this->Getplateau(xdep, ydep).Getpiece()->PriseOK(xarrivee - xdep,yarrivee - ydep, tab, tabt) == 1)
         {
-            if(tabt == 0)//Si pas de case entre case arrivée et case départ
+            if(tabt == 0)//Si pas de case entre case arrivï¿½e et case dï¿½part
             {
                 this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
                 return 1;
             }
             else
-
             {
                 int b=1;
                 for(int i=0;i<tabt;i+=2)
                 {
-                    if(this->Getplateau(tab[i+1] + ydep, tab[i] + xdep).Getpiece() != NULL)//S'il y a une pièce entre la case de départ et d'arrivé
+                    cout<<tab[i+1] + xdep<<" "<<tab[i] + ydep<<endl;
+                    if(this->Getplateau(xdep + tab[i+1], ydep + tab[i]).Getpiece() != NULL)//S'il y a une piï¿½ce entre la case de dï¿½part et d'arrivï¿½
                     {
-                        cout<<tab[i] + xdep<<" "<<tab[i+1] + ydep<<endl;
                         b=0;
                     }
 
@@ -114,7 +115,6 @@ int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonct
                     return 0;
                 }
             }
-
         }
         else
         {
@@ -123,7 +123,6 @@ int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonct
     }
     else
     {
-        //cout<<"Impossible de dÃ©placer la piÃ¨ce ici."<<endl;
         return 0;
     }
     return 0;
@@ -135,29 +134,28 @@ int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
     //y colonnes
     if(this->Getplateau(xarrivee, yarrivee).Getpiece() == NULL)//Si on bouge sur une case vide
     {
-        int tab[8];
         int tabt;
-        if(this->Getplateau(xdep, ydep).Getpiece()->DeplacementOK(xarrivee - xdep,yarrivee - ydep, tab, &tabt) == 1)
+        int tab[16];
+        for(int i=0;i<16;i++)
+            tab[i] = 0;
+        if(this->Getplateau(xdep, ydep).Getpiece()->DeplacementOK(xarrivee - xdep,yarrivee - ydep, tab, tabt) == 1)
         {
-            if(tabt == 0)//Si pas de case entre case arrivée et case départ
+            if(tabt == 0)//Si pas de case entre case arrivï¿½e et case dï¿½part
             {
-                this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
-                this->Getplateau(xdep, ydep).Setpiece(NULL);
+                this->Getplateau(xarrivee, yarrivee).Setpiece( this->Getplateau(xdep, ydep).Move() );
                 return 1;
             }
             else
             {
-                //cout<<"test"<<endl;
                 int b=1;
                 for(int i=0;i<tabt;i+=2)
                 {
-                    if(this->Getplateau(tab[i+1] + ydep, tab[i] + xdep).Getpiece() != NULL)//S'il y a une pièce entre la case de départ et d'arrivé
+                    if(this->Getplateau(xdep + tab[i+1], ydep + tab[i]).Getpiece() != NULL)//S'il y a une piï¿½ce entre la case de dï¿½part et d'arrivï¿½
                         b=0;
                 }
                 if(b==1)
                 {
                     this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
-                    this->Getplateau(xdep, ydep).Setpiece(NULL);
                     return 1;
                 }
                 else if(b==0)
@@ -165,7 +163,6 @@ int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
                     return 0;
                 }
             }
-
         }
         else
         {
@@ -190,7 +187,7 @@ int Plateau::TestFinJeu()
             if (piecesPrisent[i]->GetCouleur() == 1)
                 { return 2;}
             if (piecesPrisent[i]->GetCouleur() == 2)
-                { return 1;}
+           return 1;     { return 1;}
         }
     }
     return 0;
@@ -221,6 +218,7 @@ int main()
         while((xd>=8 || xd<0 || yd>=8 || yd<0) || p->Getplateau(xd,yd).Getpiece() == NULL || joueurcourant != p->Getplateau(xd,yd).Getpiece()->GetCouleur())
         {
             cout<< "Coordonnees de la piece a deplacer invalides. Veuillez reessayer."<<endl;
+            p->Afficher();
             cout << "ligne de la piece a bouger : \n"; cin >> xd;xd--;
             cout << "colonne de la piece a bouger : \n"; cin >> yd;yd--;
         }
@@ -231,15 +229,18 @@ int main()
         while((xf>=8 || xf<0 || yf>=8 || yf<0) || (p->DeplacerPiece(xd, yd, xf, yf) == 0))
         {
             cout<< "Coordonnees de la case d'arrivee invalides. Veuillez reessayer."<<endl;
+            p->Afficher();
             cout << "ligne ou deplacer la piece : \n"; cin >> xf;xf--;
             cout << "colonne ou deplacer la piece : \n"; cin >> yf;yf--;
         }
+
         /*
         if(joueurcourant == 1)
             joueurcourant = 2;
         else if(joueurcourant == 2)
             joueurcourant = 1;
         */
+
         p->Afficher();
     }
     return 0;

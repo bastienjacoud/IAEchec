@@ -1,5 +1,6 @@
 #include <array>
 #include <iostream>
+#include <cmath>
 #include "../include/Tour.h"
 
 using namespace std;
@@ -19,21 +20,20 @@ Tour::~Tour()
     //dtor
 }
 
-int Tour::DeplacementOK(int depY, int depX, int tab[], int* tabl)//depY -> vertical, depX -> horizontal
+int Tour::DeplacementOK(int depY, int depX, int tab[], int& tabt)//depY -> vertical, depX -> horizontal
 {
-    cout<<"depX : "<<depX<<endl;
-    cout<<"depY : "<<depY<<endl;
+    //tab[j] -> horizontal
+    //tab[j+1] -> vertical
     int j=0;
-    *tabl = 0;
     if(depX == 0)
     {
+        tabt = 2*(abs(depY)-1);
         if(depY>0)
         {
             for(int i=1;i<depY;i++)
             {
                 tab[j] = 0;
                 tab[j+1] = i;
-                *tabl +=2;
                 j+=2;
             }
         }
@@ -43,22 +43,21 @@ int Tour::DeplacementOK(int depY, int depX, int tab[], int* tabl)//depY -> verti
             {
                 tab[j] = 0;
                 tab[j+1] = i;
-                *tabl +=2;
                 j+=2;
             }
         }
         return 1;
+        //cout<<"test"<<endl;
     }
-
     else if(depY == 0)
     {
+        tabt = 2*(abs(depX)-1);
         if(depX>0)
         {
             for(int i=1;i<depX;i++)
             {
-                tab[j] = 0;
-                tab[j+1] = i;
-                *tabl +=2;
+                tab[j] = i;
+                tab[j+1] = 0;
                 j+=2;
             }
         }
@@ -66,9 +65,8 @@ int Tour::DeplacementOK(int depY, int depX, int tab[], int* tabl)//depY -> verti
         {
             for(int i=-1;i>depX;i--)
             {
-                tab[j] = 0;
-                tab[j+1] = i;
-                *tabl +=2;
+                tab[j] = i;
+                tab[j+1] = 0;
                 j+=2;
             }
         }
@@ -77,15 +75,15 @@ int Tour::DeplacementOK(int depY, int depX, int tab[], int* tabl)//depY -> verti
     else
     {
         tab = NULL;
-        *tabl = 0;
+        tabt = 0;
         return 0;
     }
 
 }
 
-int Tour::PriseOK(int depX, int depY, int tab[], int* tabl)
+int Tour::PriseOK(int depX, int depY, int tab[], int& tabt)
 {
-    return Tour::DeplacementOK(depX, depY, tab, tabl);
+    return Tour::DeplacementOK(depX, depY, tab, tabt);
 }
 
 void Tour::Afficher()

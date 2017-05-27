@@ -20,9 +20,9 @@
 	<iostream>
 	"../include/Pion.h"
 
-1495569412 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
+1495892961 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
 
-1495571339 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
+1495894978 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
 	<iostream>
 	"../include/Plateau.h"
 
@@ -30,27 +30,28 @@
 	<vector>
 	"Case.h"
 
-1495571904 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\tour.cpp
+1495894158 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\tour.cpp
 	<array>
 	<iostream>
+	<cmath>
 	"../include/Tour.h"
 
-1495569208 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\piece.cpp
+1495893013 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\piece.cpp
 	<array>
 	<iostream>
 	"../include/Piece.h"
 
-1495569193 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\roi.cpp
+1495704622 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\roi.cpp
 	<iostream>
 	"../include/Roi.h"
 
 1495569331 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\roi.h
 	"Piece.h"
 
-1495569801 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\tour.h
+1495892944 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\tour.h
 	"Piece.h"
 
-1495569116 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\cavalier.cpp
+1495704622 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\cavalier.cpp
 	<iostream>
 	"../include/Cavalier.h"
 
