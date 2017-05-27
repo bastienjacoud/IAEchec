@@ -27,7 +27,7 @@ void Roi::Afficher()
     cout<<" R"<<GetCouleur()<<" ";
 }
 
-int Roi::DeplacementOK(int depX, int depY, int tab[], int* tabl)
+int Roi::DeplacementOK(int depX, int depY, int tab[], int& tabl)
 {
     if(((depX == 1) || (depX == 0) || (depX == -1)) && ((depY == 1) || (depY == 0) || (depY == -1)))
         return 1;
@@ -35,7 +35,7 @@ int Roi::DeplacementOK(int depX, int depY, int tab[], int* tabl)
         return 0;
 }
 
-int Roi::PriseOK(int depX, int depY, int tab[], int* tabl)
+int Roi::PriseOK(int depX, int depY, int tab[], int& tabl)
 {
     return Roi::DeplacementOK(depX, depY, tab, tabl);
 }

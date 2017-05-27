@@ -13,8 +13,8 @@ class Fou : public Piece
         Fou();
         Fou(int couleur);
         virtual ~Fou();
-        virtual int DeplacementOK(int depX, int depY, int tab[], int* tabl);
-        virtual int PriseOK(int depX, int depY, int tab[], int* tabl);
+        virtual int DeplacementOK(int depX, int depY, int tab[], int& tabl);
+        virtual int PriseOK(int depX, int depY, int tab[], int& tabl);
         virtual void Afficher();
         virtual char getType(){ return 'F';}
     protected:

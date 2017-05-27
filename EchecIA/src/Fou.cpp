@@ -2,6 +2,7 @@
 // Created by natjo on 13/04/2017.
 //
 #include <iostream>
+#include <cmath>
 #include "../include/Fou.h"
 
 using namespace std;
@@ -24,19 +25,20 @@ Fou::~Fou()
 }
 
 
-int Fou::DeplacementOK(int depX, int depY, int tab[], int* tabl)
+int Fou::DeplacementOK(int depX, int depY, int tab[], int& tabl)
 {
-    *tabl = 0;
+    //tab[j] -> horizontal
+    //tab[j+1] -> vertical
     int j=0;
     if(depX == depY)
-    {
+    {tabl = 0;
+        tabl = 2*(abs(depX)-1);
         if(depX>0)
         {
             for(int i=1;i<depX;i++)
             {
                 tab[j] = i;
                 tab[j+1] = i;
-                *tabl += 2;
                 j+=2;
             }
         }
@@ -46,7 +48,6 @@ int Fou::DeplacementOK(int depX, int depY, int tab[], int* tabl)
             {
                 tab[j] = i;
                 tab[j+1] = i;
-                *tabl += 2;
                 j+=2;
             }
         }
@@ -61,7 +62,6 @@ int Fou::DeplacementOK(int depX, int depY, int tab[], int* tabl)
             {
                 tab[j] = i;
                 tab[j+1] = -i;
-                *tabl += 2;
                 j+=2;
             }
         }
@@ -71,7 +71,6 @@ int Fou::DeplacementOK(int depX, int depY, int tab[], int* tabl)
             {
                 tab[j] = i;
                 tab[j+1] = -i;
-                *tabl += 2;
                 j+=2;
             }
         }
@@ -80,13 +79,13 @@ int Fou::DeplacementOK(int depX, int depY, int tab[], int* tabl)
     else
     {
         tab = NULL;
-        *tabl = 0;
+        tabl = 0;
         return 0;
     }
 
 }
 
-int Fou::PriseOK(int depX, int depY, int tab[], int* tabl)
+int Fou::PriseOK(int depX, int depY, int tab[], int& tabl)
 {
     return Fou::DeplacementOK(depX, depY, tab, tabl);
 }

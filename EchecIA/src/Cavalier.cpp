@@ -29,10 +29,10 @@ void Cavalier::Afficher()
     cout<<" C"<<GetCouleur()<<" ";
 }
 
-int Cavalier::DeplacementOK(int depX, int depY, int tab[], int* tabl)
+int Cavalier::DeplacementOK(int depX, int depY, int tab[], int& tabl)
 {
     tab = NULL;
-    *tabl = 0;
+    tabl = 0;
     if((depX == 2 && depY == 1) || (depX == 2 && depY == - 1) || (depX == -2 && depY == 1) || (depX == -2 && depY == -1)
             || (depX == 1 && depY == 2) || (depX == 1 && depY == -2) || (depX == -1 && depY == 2) || (depX == -1 && depY == -2))
         return 1;
@@ -40,7 +40,7 @@ int Cavalier::DeplacementOK(int depX, int depY, int tab[], int* tabl)
         return 0;
 }
 
-int Cavalier::PriseOK(int depX, int depY, int tab[], int* tabl)
+int Cavalier::PriseOK(int depX, int depY, int tab[], int& tabl)
 {
     return Cavalier::DeplacementOK(depX, depY, tab, tabl);
 }

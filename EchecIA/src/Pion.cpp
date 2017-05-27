@@ -19,7 +19,7 @@ Pion::~Pion()
 
 }
 
-int Pion::DeplacementOK(int depX, int depY, int tab[], int* tabl)
+int Pion::DeplacementOK(int depX, int depY, int tab[], int& tabl)
 {
 
     if(GetCouleur() == 1)
@@ -30,7 +30,7 @@ int Pion::DeplacementOK(int depX, int depY, int tab[], int* tabl)
             {
                 premierCoup = 0;
                 tab = NULL;
-                *tabl = 0;
+                tabl = 0;
                 return 1;
             }
             else if((depX==2) && (depY==0))
@@ -38,13 +38,13 @@ int Pion::DeplacementOK(int depX, int depY, int tab[], int* tabl)
                 premierCoup = 0;
                 tab[0] = 1;
                 tab[1] = 0;
-                *tabl = 2;
+                tabl = 2;
                 return 1;
             }
             else
             {
                 tab = NULL;
-                *tabl = 0;
+                tabl = 0;
                 return 0;
             }
 
@@ -55,13 +55,13 @@ int Pion::DeplacementOK(int depX, int depY, int tab[], int* tabl)
             {
                 premierCoup = 0;
                 tab = NULL;
-                *tabl = 0;
+                tabl = 0;
                 return 1;
             }
             else
             {
                 tab = NULL;
-                *tabl = 0;
+                tabl = 0;
                 return 0;
             }
 
@@ -75,7 +75,7 @@ int Pion::DeplacementOK(int depX, int depY, int tab[], int* tabl)
             {
                 premierCoup = 0;
                 tab = NULL;
-                *tabl = 0;
+                tabl = 0;
                 return 1;
             }
             else if((depX==-2) && (depY==0))
@@ -83,13 +83,13 @@ int Pion::DeplacementOK(int depX, int depY, int tab[], int* tabl)
                 premierCoup = 0;
                 tab[0] = -1;
                 tab[1] = 0;
-                *tabl = 2;
+                tabl = 2;
                 return 1;
             }
             else
             {
                 tab = NULL;
-                *tabl = 0;
+                tabl = 0;
                 return 0;
             }
 
@@ -100,13 +100,13 @@ int Pion::DeplacementOK(int depX, int depY, int tab[], int* tabl)
             {
                 premierCoup = 0;
                 tab = NULL;
-                *tabl = 0;
+                tabl = 0;
                 return 1;
             }
             else
             {
                 tab = NULL;
-                *tabl = 0;
+                tabl = 0;
                 return 0;
             }
 
@@ -115,7 +115,7 @@ int Pion::DeplacementOK(int depX, int depY, int tab[], int* tabl)
     //return 0;
 }
 
-int Pion::PriseOK(int depX, int depY, int tab[], int* tabl)
+int Pion::PriseOK(int depX, int depY, int tab[], int& tabl)
 {
     return Pion::DeplacementOK(depX, depY, tab, tabl);
 }
