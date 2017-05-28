@@ -304,7 +304,6 @@ void Plateau::TestPionArrive()
     }
 }
 
-
 /*
         IMPLEMENTATION DE L'IA
 */
@@ -373,6 +372,7 @@ int Plateau::alphaBetaMin(Plateau plateau, int& alpha, int& beta, int prof )
 void Plateau::lancerIA(Plateau plateau, int prof)
 {
     int maximum = -10000;
+    int minimum = -10000;
     int xdep,ydep,xarr,yarr;
 
     int tabDepl;
@@ -382,7 +382,7 @@ void Plateau::lancerIA(Plateau plateau, int prof)
         plateau.DeplacerPiece(pos_possible[i][0],pos_possible[i][1],pos_possible[i][2],pos_possible[i][3]);
 
         //On calcule le score
-        int score = alphaBetaMin(plateau, -10000, 10000, prof - 1 );
+        int score = alphaBetaMin(plateau, maximum, minimum, prof - 1 );
 
         if((score > maximum)/* || ((tmp == maximum) && ((rand() % 2) == 0))*/)
         {
@@ -399,7 +399,6 @@ void Plateau::lancerIA(Plateau plateau, int prof)
     plateau.DeplacerPiece(xdep, ydep, xarr, yarr);
 }
 
-
 int Plateau::deplacementPossible(int couleur)
 {
     int n = 0;
@@ -413,14 +412,23 @@ int Plateau::deplacementPossible(int couleur)
                 {
                     for(int b = 0; b < 8; b++)
                     {
-                        if(this->DeplacerPiece(i,j,a,b) == 1)
+                        if (this->DeplacerPiece(i, j, a, b) != 0)
                         {
                             pos_possible[n][0] = i;
                             pos_possible[n][1] = j;
                             pos_possible[n][2] = a;
                             pos_possible[n][3] = b;
                             n++;
+                            cout<< pos_possible[n][0] << "alors que i= " << i <<endl;
+                            cout<< pos_possible[n][1] <<endl;
+                            cout<< pos_possible[n][2] <<endl;
+                            cout<< pos_possible[n][3] <<endl;
                         }
+                        else
+                        {
+                            //cout << "erreur" <<endl ;
+                        }
+
 
                     }
                 }
@@ -444,6 +452,7 @@ int main()
     int chgtpiece;
 
     p->Afficher();
+    p->deplacementPossible(2);
 
 
     while(p->TestFinJeu() == 0)

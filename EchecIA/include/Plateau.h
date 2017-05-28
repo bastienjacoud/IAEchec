@@ -21,12 +21,12 @@ class Plateau
         void SupprimePiecePrise(Piece p);
         void AffichePiecePrise();
         void TestPionArrive();
-
-        int alphaBetaMin(Plateau plateau, int alpha, int beta, int prof );
-        int alphaBetaMax(Plateau plateau, int alpha, int beta, int prof );
+        //Fonctions pour l'ia
+        int alphaBetaMin(Plateau plateau, int& alpha, int& beta, int prof );
+        int alphaBetaMax(Plateau plateau, int& alpha, int& beta, int prof );
         void lancerIA(Plateau plateau, int prof );
         int Evaluation(Plateau plateau);
-        void deplacementPossible(int couleur);
+        int deplacementPossible(int couleur);
     protected:
     private:
         Case* m_plateau[8][8];
