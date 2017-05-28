@@ -25,6 +25,7 @@ class Plateau
     private:
         Case* m_plateau[8][8];
         Piece* piecesPrisent[24];
+        int np = 0;
 };
 
 #endif // PLATEAU_H

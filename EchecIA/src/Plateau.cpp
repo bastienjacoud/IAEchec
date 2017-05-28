@@ -114,6 +114,13 @@ int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonct
             if(tabt == 0)//Si pas de case entre case arriv�e et case d�part
             {
                 this->AjoutePiecePrise(*this->Getplateau(xarrivee, yarrivee).Getpiece());
+                //piecesPrisent[np] = this->Getplateau(xarrivee, yarrivee).Getpiece();
+                //char c = piecesPrisent[np]->getType();    //Donne le bon type quand l'affichage marche
+                //cout << "fzdfsd ==" << c << endl;
+                //np ++;
+                //int x = this->TestFinJeu();
+                //cout<< "x = " << x << endl;
+                //cout<< "np = " << np << endl;
                 this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
                 return 1;
             }

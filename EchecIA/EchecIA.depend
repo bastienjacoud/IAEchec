@@ -20,7 +20,7 @@
 	<iostream>
 	"../include/Pion.h"
 
-1495892961 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
+1495973033 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
 
 1495972899 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
 	<iostream>
@@ -58,7 +58,7 @@
 1495895575 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\cavalier.h
 	"Piece.h"
 
-1495972471 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\fou.cpp
+1495972954 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\fou.cpp
 	<iostream>
 	<cmath>
 	"../include/Fou.h"
