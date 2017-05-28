@@ -23,10 +23,10 @@ Plateau::Plateau()
     this->m_plateau[1][3]->Setpiece( new Pion(1) );
     this->m_plateau[1][5]->Setpiece( new Pion(1) );
     this->m_plateau[1][7]->Setpiece( new Pion(1) );
-    this->m_plateau[2][0]->Setpiece( new Pion(1) );//2 0
-    this->m_plateau[2][2]->Setpiece( new Pion(1) );
-    this->m_plateau[2][4]->Setpiece( new Pion(1) );
-    this->m_plateau[2][6]->Setpiece( new Pion(1) );
+    //this->m_plateau[2][0]->Setpiece( new Pion(1) );//2 0
+    //this->m_plateau[2][2]->Setpiece( new Pion(1) );
+    //this->m_plateau[2][4]->Setpiece( new Pion(1) );
+    //this->m_plateau[2][6]->Setpiece( new Pion(1) );
 
 
     //placement des pions blancs
@@ -300,6 +300,30 @@ void Plateau::TestPionArrive()
 }
 
 
+void Plateau::deplacementPossible(int couleur){
+    int n = 0;
+    for(int i = 0; i < 8; i++){
+        for(int j = 0; j < 8; j++){
+            if(this->Getplateau(i, j).Getpiece() != NULL && this->Getplateau(i,j).Getpiece()->GetCouleur() == couleur){
+                for(int a = 0; a < 8; a++) {
+                    for(int b = 0; b < 8; b++) {
+
+                        pos_possible[n][0] = this->Getplateau(i, j).Getpiece()->GetposX();
+                        pos_possible[n][1] = this->Getplateau(i, j).Getpiece()->GetposY();
+                        int x = pos_possible[n][0];
+                        int y = pos_possible[n][1];
+                        if(this->Getplateau(i,j).Getpiece()->DeplacementOK())
+                    }
+                }
+
+
+            }
+        }
+    }
+
+
+
+}
 
 int main()
 {
@@ -348,11 +372,11 @@ int main()
         }
 
 
-        if(joueurcourant == 1)
+     /*   if(joueurcourant == 1)
             joueurcourant = 2;
         else if(joueurcourant == 2)
             joueurcourant = 1;
-
+*/
         //p->AffichePiecePrise();
         p->TestPionArrive();
 

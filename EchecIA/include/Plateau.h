@@ -21,11 +21,13 @@ class Plateau
         void SupprimePiecePrise(Piece p);
         void AffichePiecePrise();
         void TestPionArrive();
+        void deplacementPossible(int couleur);
     protected:
     private:
         Case* m_plateau[8][8];
         Piece* piecesPrisent[24];
         int np = 0;
+        int pos_possible[368][4];
 };
 
 #endif // PLATEAU_H
