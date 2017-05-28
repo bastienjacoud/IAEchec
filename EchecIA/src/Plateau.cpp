@@ -23,14 +23,14 @@ Plateau::Plateau()
     this->m_plateau[1][3]->Setpiece( new Pion(1) );
     this->m_plateau[1][5]->Setpiece( new Pion(1) );
     this->m_plateau[1][7]->Setpiece( new Pion(1) );
-    //this->m_plateau[2][0]->Setpiece( new Pion(1) );//2 0
-    //this->m_plateau[2][2]->Setpiece( new Pion(1) );
-    //this->m_plateau[2][4]->Setpiece( new Pion(1) );
-    //this->m_plateau[2][6]->Setpiece( new Pion(1) );
+    this->m_plateau[2][0]->Setpiece( new Pion(1) );//2 0
+    this->m_plateau[2][2]->Setpiece( new Pion(1) );
+    this->m_plateau[2][4]->Setpiece( new Pion(1) );
+    this->m_plateau[2][6]->Setpiece( new Pion(1) );
 
 
     //placement des pions blancs
-    this->m_plateau[7][0]->Setpiece( new Tour(2) );
+    //this->m_plateau[7][0]->Setpiece( new Tour(2) );
     this->m_plateau[7][2]->Setpiece( new Fou(2) );
     this->m_plateau[7][4]->Setpiece( new Roi(2) );
     this->m_plateau[7][6]->Setpiece( new Cavalier(2) );
@@ -38,7 +38,7 @@ Plateau::Plateau()
     this->m_plateau[6][3]->Setpiece( new Pion(2) );
     this->m_plateau[6][5]->Setpiece( new Pion(2) );
     this->m_plateau[6][7]->Setpiece( new Pion(2) );//6 7
-    this->m_plateau[5][0]->Setpiece( new Pion(2) );//5 0
+    //this->m_plateau[5][0]->Setpiece( new Pion(2) );//5 0
     this->m_plateau[5][2]->Setpiece( new Pion(2) );
     this->m_plateau[5][4]->Setpiece( new Pion(2) );
     this->m_plateau[5][6]->Setpiece( new Pion(2) );
@@ -253,9 +253,23 @@ void Plateau::TestPionArrive()
                 int b=0;
                 while(b==0)
                 {
-                    cout<<"Par quelle piece remplacer votre pion?(P, T, C ou F)"<<endl;
+                    cout<<"Par quelle piece remplacer votre pion?(T, C ou F)"<<endl;
                     cin>>c;
-                    for(int k=0;k<24;k++)
+                    if(c == 'T'){
+                        this->Getplateau(0,i).Setpiece(new Tour(2));
+                        b=1;
+                    }
+
+                    if(c == 'C'){
+                        this->Getplateau(0,i).Setpiece(new Cavalier(2));
+                        b=1;
+                    }
+
+                    if(c == 'F'){
+                        this->Getplateau(0,i).Setpiece(new Fou(2));
+                        b=1;
+                    }
+/*                    for(int k=0;k<24;k++)
                     {
                         if(this->piecesPrisent[k] != NULL)
                         {
@@ -270,9 +284,10 @@ void Plateau::TestPionArrive()
                             if(c == 'P')
                                 b=1;
                     }
-                    if(b==0)
+*/                    if(b==0)
                     {
-                        cout<<"Choisissez une pièce que vous avez perdu !"<<endl;
+                        //cout<<"Choisissez une pièce que vous avez perdu !"<<endl;
+                        cout<<"Vous avez le choix seulement entre T, C et F !"<<endl;
                     }
                 }
             }
@@ -283,9 +298,23 @@ void Plateau::TestPionArrive()
                 int b=0;
                 while(b==0)
                 {
-                    cout<<"Par quelle piece remplacer votre pion?(P, T, C ou F)"<<endl;
+                    cout<<"Par quelle piece remplacer votre pion?(T, C ou F)"<<endl;
                     cin>>c;
-                    for(int k=0;k<24;k++)
+                    if(c == 'T'){
+                        this->Getplateau(7,i).Setpiece(new Tour(1));
+                        b=1;
+                    }
+
+                    if(c == 'C'){
+                        this->Getplateau(7,i).Setpiece(new Cavalier(1));
+                        b=1;
+                    }
+
+                    if(c == 'F'){
+                        this->Getplateau(7,i).Setpiece(new Fou(1));
+                        b=1;
+                    }
+/*                    for(int k=0;k<24;k++)
                     {
                         if(this->piecesPrisent[k] != NULL)
                             if((this->piecesPrisent[k]->getType() == c) && (this->piecesPrisent[k]->GetCouleur() == 1))
@@ -295,9 +324,10 @@ void Plateau::TestPionArrive()
                                 this->piecesPrisent[k] = NULL;
                             }
                     }
-                    if(b==0)
+*/                    if(b==0)
                     {
-                        cout<<"Choisissez une pièce que vous avez perdu !"<<endl;
+                        //cout<<"Choisissez une pièce que vous avez perdu !"<<endl;
+                        cout<<"Vous avez le choix seulement entre T, C et F !"<<endl;
                     }
                 }
             }
@@ -452,7 +482,7 @@ int main()
     int chgtpiece;
 
     p->Afficher();
-    p->deplacementPossible(2);
+    //p->deplacementPossible(2);
 
 
     while(p->TestFinJeu() == 0)
@@ -488,14 +518,14 @@ int main()
                 chgtpiece = 1;
         }
 
-        if(chgtpiece==0)
+/*        if(chgtpiece==0)
         {
             if(joueurcourant == 1)
             joueurcourant = 2;
             else if(joueurcourant == 2)
                 joueurcourant = 1;
         }
-
+*/
         //p->AffichePiecePrise();
         p->TestPionArrive();
 
