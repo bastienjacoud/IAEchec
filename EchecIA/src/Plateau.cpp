@@ -44,7 +44,7 @@ Plateau::Plateau()
     this->m_plateau[5][6]->Setpiece( new Pion(2) );
 
     for(int i=0;i<24;i++)
-        this->piecesPrisent[i] = NULL;
+        this->piecesPrisent[i] = new Piece();
 
 }
 
@@ -61,11 +61,18 @@ void Plateau::Setplateau(Case plateau[8][8])
             *m_plateau[i][j] = plateau[i][j];
 }
 
-void Plateau::AjoutePiecePrise(Piece p)
+void Plateau::AjoutePiecePrise(Piece* p)
 {
     for(int i=0;i<24;i++)
         if(this->piecesPrisent[i] != NULL)
-            *this->piecesPrisent[i] = p;
+        {
+            if(this->piecesPrisent[i]->getType() == 'I')
+            {
+                this->piecesPrisent[i] = p;
+                return;
+            }
+        }
+
 }
 
 void Plateau::SupprimePiecePrise(Piece p)
@@ -80,7 +87,7 @@ void Plateau::AffichePiecePrise()
 {
     for(int i=0;i<24;i++)
         if(this->piecesPrisent[i] != NULL)
-            cout<<this->piecesPrisent[i]->getType()<<"test"<<endl;
+            cout<<this->piecesPrisent[i]->getType()<<endl;
 }
 
 /*
@@ -113,14 +120,17 @@ int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonct
         {
             if(tabt == 0)//Si pas de case entre case arriv�e et case d�part
             {
-                this->AjoutePiecePrise(*this->Getplateau(xarrivee, yarrivee).Getpiece());
-                //piecesPrisent[np] = this->Getplateau(xarrivee, yarrivee).Getpiece();
-                //char c = piecesPrisent[np]->getType();    //Donne le bon type quand l'affichage marche
-                //cout << "fzdfsd ==" << c << endl;
-                //np ++;
-                //int x = this->TestFinJeu();
-                //cout<< "x = " << x << endl;
-                //cout<< "np = " << np << endl;
+                this->AjoutePiecePrise(this->Getplateau(xarrivee, yarrivee).Getpiece());
+                //this->AffichePiecePrise();
+                /*
+                piecesPrisent[np] = this->Getplateau(xarrivee, yarrivee).Getpiece();
+                char c = piecesPrisent[np]->getType();    //Donne le bon type quand l'affichage marche
+                cout << "fzdfsd ==" << c << endl;
+                np ++;
+                int x = this->TestFinJeu();
+                cout<< "x = " << x << endl;
+                cout<< "np = " << np << endl;
+                */
                 this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
                 return 1;
             }
@@ -137,7 +147,8 @@ int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonct
                 }
                 if(b==1)
                 {
-                    this->AjoutePiecePrise(*this->Getplateau(xarrivee, yarrivee).Getpiece());
+                    this->AjoutePiecePrise(this->Getplateau(xarrivee, yarrivee).Getpiece());
+                    //this->AffichePiecePrise();
                     this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
                     return 1;
                 }
@@ -178,7 +189,6 @@ int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
             }
             else
             {
-                cout<<"tabt = "<<tabt<<endl;
                 int b=1;
                 for(int i=0;i<tabt;i+=2)
                 {
@@ -329,7 +339,7 @@ int main()
         else if(joueurcourant == 2)
             joueurcourant = 1;
         */
-        p->AffichePiecePrise();
+        //p->AffichePiecePrise();
 
         p->Afficher();
     }

@@ -17,7 +17,7 @@ class Plateau
         int prendrePiece(int xdep, int ydep, int xarrive, int yarrive);
         int DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee);
         int TestFinJeu();
-        void AjoutePiecePrise(Piece p);
+        void AjoutePiecePrise(Piece* p);
         void SupprimePiecePrise(Piece p);
         void AffichePiecePrise();
         void TestPionArrive();

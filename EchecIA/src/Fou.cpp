@@ -59,7 +59,6 @@ int Fou::DeplacementOK(int depY, int depX, int tab[], int& tabl)
         tabl = 2*(abs(depX)-1);
         if(depX>0)
         {
-            cout<<"test1"<<endl;
             for(int i=1;i<depX;i++)
             {
                 tab[j] = i;
@@ -69,7 +68,6 @@ int Fou::DeplacementOK(int depY, int depX, int tab[], int& tabl)
         }
         if(depX<0)
         {
-            cout<<"test2"<<endl;
             for(int i=-1;i>depX;i--)
             {
                 tab[j] = i;

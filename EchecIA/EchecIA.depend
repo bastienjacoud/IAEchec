@@ -22,11 +22,11 @@
 
 1495973033 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
 
-1495972899 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
+1495974584 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
 	<iostream>
 	"../include/Plateau.h"
 
-1495902176 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
+1495974258 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
 	<vector>
 	"Case.h"
 
@@ -41,7 +41,7 @@
 	<iostream>
 	"../include/Piece.h"
 
-1495895697 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\roi.cpp
+1495973033 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\roi.cpp
 	<iostream>
 	"../include/Roi.h"
 
@@ -58,7 +58,7 @@
 1495895575 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\cavalier.h
 	"Piece.h"
 
-1495972954 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\fou.cpp
+1495973389 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\fou.cpp
 	<iostream>
 	<cmath>
 	"../include/Fou.h"
