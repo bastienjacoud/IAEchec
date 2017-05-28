@@ -307,17 +307,22 @@ void Plateau::deplacementPossible(int couleur){
             if(this->Getplateau(i, j).Getpiece() != NULL && this->Getplateau(i,j).Getpiece()->GetCouleur() == couleur){
                 for(int a = 0; a < 8; a++) {
                     for(int b = 0; b < 8; b++) {
+                        int x = this->Getplateau(i, j).Getpiece()->GetposX();
+                        int y = this->Getplateau(i, j).Getpiece()->GetposY();
+                        if(this->DeplacerPiece(x,y,a,b) == 1){
+                            pos_possible[n][0] = x;
+                            pos_possible[n][1] = y;
+                            pos_possible[n][2] = a;
+                            pos_possible[n][3] = b;
+                            n++;
+                        }
 
-                        pos_possible[n][0] = this->Getplateau(i, j).Getpiece()->GetposX();
-                        pos_possible[n][1] = this->Getplateau(i, j).Getpiece()->GetposY();
-                        int x = pos_possible[n][0];
-                        int y = pos_possible[n][1];
-                        if(this->Getplateau(i,j).Getpiece()->DeplacementOK())
                     }
                 }
 
 
             }
+
         }
     }
 
