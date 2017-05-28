@@ -300,22 +300,28 @@ void Plateau::TestPionArrive()
 }
 
 
-void Plateau::deplacementPossible(int couleur){
+int Plateau::deplacementPossible(int couleur){
     int n = 0;
     for(int i = 0; i < 8; i++){
         for(int j = 0; j < 8; j++){
             if(this->Getplateau(i, j).Getpiece() != NULL && this->Getplateau(i,j).Getpiece()->GetCouleur() == couleur){
                 for(int a = 0; a < 8; a++) {
                     for(int b = 0; b < 8; b++) {
-                        int x = this->Getplateau(i, j).Getpiece()->GetposX();
-                        int y = this->Getplateau(i, j).Getpiece()->GetposY();
-                        if(this->DeplacerPiece(x,y,a,b) == 1){
-                            pos_possible[n][0] = x;
-                            pos_possible[n][1] = y;
+                        if (this->DeplacerPiece(i, j, a, b) != 0) {
+                            pos_possible[n][0] = i;
+                            pos_possible[n][1] = j;
                             pos_possible[n][2] = a;
                             pos_possible[n][3] = b;
                             n++;
+                            cout<< pos_possible[n][0] << "alors que i= " << i <<endl;
+                            cout<< pos_possible[n][1] <<endl;
+                            cout<< pos_possible[n][2] <<endl;
+                            cout<< pos_possible[n][3] <<endl;
                         }
+                        else{
+                            //cout << "erreur" <<endl ;
+                        }
+
 
                     }
                 }
@@ -325,6 +331,7 @@ void Plateau::deplacementPossible(int couleur){
 
         }
     }
+    return n;
 
 
 
@@ -341,6 +348,7 @@ int main()
     int chgtpiece;
 
     p->Afficher();
+    p->deplacementPossible(2);
 
 
     while(p->TestFinJeu() == 0)

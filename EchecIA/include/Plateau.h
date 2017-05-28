@@ -21,7 +21,7 @@ class Plateau
         void SupprimePiecePrise(Piece p);
         void AffichePiecePrise();
         void TestPionArrive();
-        void deplacementPossible(int couleur);
+        int deplacementPossible(int couleur);
     protected:
     private:
         Case* m_plateau[8][8];
