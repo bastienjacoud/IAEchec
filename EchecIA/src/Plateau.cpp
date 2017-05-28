@@ -258,12 +258,17 @@ void Plateau::TestPionArrive()
                     for(int k=0;k<24;k++)
                     {
                         if(this->piecesPrisent[k] != NULL)
+                        {
                             if((this->piecesPrisent[k]->getType() == c) && (this->piecesPrisent[k]->GetCouleur() == 2))
                             {
                                 b=1;
                                 this->Getplateau(0,i).Setpiece(this->piecesPrisent[k]);
                                 this->piecesPrisent[k] = NULL;
                             }
+                        }
+                        else // si le joueur ne s'est fait prendre aucune piece
+                            if(c == 'P')
+                                b=1;
                     }
                     if(b==0)
                     {
@@ -300,6 +305,90 @@ void Plateau::TestPionArrive()
 }
 
 
+/*
+        IMPLEMENTATION DE L'IA
+*/
+
+int Plateau::Evaluation(Plateau plateau)
+{
+    return 1;
+}
+
+int Plateau::alphaBetaMax(Plateau plateau, int alpha, int beta, int prof )//plateau modifié
+{
+    if ( prof == 0 )
+        return Evaluation(plateau);
+
+    //int[] tabDep= stockage de tout mes déplacements de toute les piece de ma couleur
+    int tabDep[386][4];
+    int tabDepl;
+    for (int i = 0; i< tabDepl; i++)
+    {
+
+      Plateau plateau_modifie = plateau; //copie du plateau
+      plateau_modifie
+
+      int score = alphaBetaMin(plateau_modifie, alpha, beta, prof - 1 );
+      //Annuler le coup
+
+      if( score >= beta )
+         return beta;   // fail hard beta-cutoff
+      if( score > alpha )
+         alpha = score; // alpha acts like max in MiniMax
+    }
+    return alpha;
+}
+
+int Plateau::alphaBetaMin(Plateau plateau, int alpha, int beta, int prof )
+{
+    if ( prof == 0 )
+        return - Evaluation(plateau);
+
+    //int[] tabDep= stockage de tout mes déplacements de toute les piece de ma couleur
+
+    for (int i = 0; i< tabDep.length; i++)
+    {
+
+
+      Plateau plateau_modifie = plateau; //copie du plateau
+      Effectuerdeplacement(plateau_modifie,tabDep);
+
+
+      score = alphaBetaMax(plateau_modifie, alpha, beta, depthleft - 1 );
+
+      if( score <= alpha )
+         return alpha; // fail hard alpha-cutoff
+      if( score < beta )
+         beta = score; // beta acts like min in MiniMax
+    }
+    return beta;
+}
+
+/*
+void Plateau::lancerIA(Plateau plateau, int alpha, int beta, int prof )
+{
+    if ( prof == 0 )
+        return Evaluation(plateau);
+
+    int[] tabDep= stockage de tout mes déplacements de toute les piece de ma couleur
+
+    for ( i = 0; i< tabDep.length; i++)
+    {
+
+      Plateau plateau_modifié = plateau; //copie du plateau
+      Effectuerdeplacement(plateau_modifier,tabDep);
+
+      score = alphaBetaMin(plateau_modifié, alpha, beta, prof - 1 );
+
+
+      if( score >= beta )
+         return beta;   // fail hard beta-cutoff
+      if( score > alpha )
+         alpha = score; // alpha acts like max in MiniMax
+    }
+    //deplacer la piece
+}
+*/
 
 int main()
 {
@@ -347,11 +436,13 @@ int main()
                 chgtpiece = 1;
         }
 
-
-        if(joueurcourant == 1)
+        if(chgtpiece==0)
+        {
+            if(joueurcourant == 1)
             joueurcourant = 2;
-        else if(joueurcourant == 2)
-            joueurcourant = 1;
+            else if(joueurcourant == 2)
+                joueurcourant = 1;
+        }
 
         //p->AffichePiecePrise();
         p->TestPionArrive();

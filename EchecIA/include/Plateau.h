@@ -21,6 +21,11 @@ class Plateau
         void SupprimePiecePrise(Piece p);
         void AffichePiecePrise();
         void TestPionArrive();
+
+        int alphaBetaMin(Plateau plateau, int alpha, int beta, int prof );
+        int alphaBetaMax(Plateau plateau, int alpha, int beta, int prof );
+        void lancerIA(Plateau plateau, int alpha, int beta, int prof );
+        int Evaluation(Plateau plateau);
     protected:
     private:
         Case* m_plateau[8][8];
