@@ -24,13 +24,15 @@ class Plateau
 
         int alphaBetaMin(Plateau plateau, int alpha, int beta, int prof );
         int alphaBetaMax(Plateau plateau, int alpha, int beta, int prof );
-        void lancerIA(Plateau plateau, int alpha, int beta, int prof );
+        void lancerIA(Plateau plateau, int prof );
         int Evaluation(Plateau plateau);
+        void deplacementPossible(int couleur);
     protected:
     private:
         Case* m_plateau[8][8];
         Piece* piecesPrisent[24];
         int np = 0;
+        int pos_possible[368][4];
 };
 
 #endif // PLATEAU_H

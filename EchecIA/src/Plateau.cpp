@@ -23,10 +23,10 @@ Plateau::Plateau()
     this->m_plateau[1][3]->Setpiece( new Pion(1) );
     this->m_plateau[1][5]->Setpiece( new Pion(1) );
     this->m_plateau[1][7]->Setpiece( new Pion(1) );
-    this->m_plateau[2][0]->Setpiece( new Pion(1) );//2 0
-    this->m_plateau[2][2]->Setpiece( new Pion(1) );
-    this->m_plateau[2][4]->Setpiece( new Pion(1) );
-    this->m_plateau[2][6]->Setpiece( new Pion(1) );
+    //this->m_plateau[2][0]->Setpiece( new Pion(1) );//2 0
+    //this->m_plateau[2][2]->Setpiece( new Pion(1) );
+    //this->m_plateau[2][4]->Setpiece( new Pion(1) );
+    //this->m_plateau[2][6]->Setpiece( new Pion(1) );
 
 
     //placement des pions blancs
@@ -314,81 +314,124 @@ int Plateau::Evaluation(Plateau plateau)
     return 1;
 }
 
-int Plateau::alphaBetaMax(Plateau plateau, int alpha, int beta, int prof )//plateau modifié
+int Plateau::alphaBetaMax(Plateau plateau, int& alpha, int& beta, int prof )//plateau modifié
 {
     if ( prof == 0 )
         return Evaluation(plateau);
 
     //int[] tabDep= stockage de tout mes déplacements de toute les piece de ma couleur
-    int tabDep[386][4];
     int tabDepl;
     for (int i = 0; i< tabDepl; i++)
     {
+      //On joue le coup
+      plateau.DeplacerPiece(pos_possible[i][0],pos_possible[i][1],pos_possible[i][2],pos_possible[i][3]);
 
-      Plateau plateau_modifie = plateau; //copie du plateau
-      plateau_modifie
-
-      int score = alphaBetaMin(plateau_modifie, alpha, beta, prof - 1 );
-      //Annuler le coup
+      //On calcule le score
+      int score = alphaBetaMin(plateau, alpha, beta, prof - 1 );
 
       if( score >= beta )
          return beta;   // fail hard beta-cutoff
       if( score > alpha )
          alpha = score; // alpha acts like max in MiniMax
+
+      //On annule le coup
+      plateau.DeplacerPiece(pos_possible[i][2],pos_possible[i][3],pos_possible[i][0],pos_possible[i][1]);
+
     }
     return alpha;
 }
 
-int Plateau::alphaBetaMin(Plateau plateau, int alpha, int beta, int prof )
+int Plateau::alphaBetaMin(Plateau plateau, int& alpha, int& beta, int prof )
 {
     if ( prof == 0 )
         return - Evaluation(plateau);
 
     //int[] tabDep= stockage de tout mes déplacements de toute les piece de ma couleur
 
-    for (int i = 0; i< tabDep.length; i++)
+    int tabDepl;
+    for (int i = 0; i< tabDepl; i++)
     {
+      //On joue le coup
+      plateau.DeplacerPiece(pos_possible[i][0],pos_possible[i][1],pos_possible[i][2],pos_possible[i][3]);
 
-
-      Plateau plateau_modifie = plateau; //copie du plateau
-      Effectuerdeplacement(plateau_modifie,tabDep);
-
-
-      score = alphaBetaMax(plateau_modifie, alpha, beta, depthleft - 1 );
+      //On calcule le score
+      int score = alphaBetaMax(plateau, alpha, beta, prof - 1 );
 
       if( score <= alpha )
          return alpha; // fail hard alpha-cutoff
       if( score < beta )
          beta = score; // beta acts like min in MiniMax
+
+      //On annule le coup
+      plateau.DeplacerPiece(pos_possible[i][2],pos_possible[i][3],pos_possible[i][0],pos_possible[i][1]);
+
     }
     return beta;
 }
 
-/*
-void Plateau::lancerIA(Plateau plateau, int alpha, int beta, int prof )
+
+void Plateau::lancerIA(Plateau plateau, int prof)
 {
-    if ( prof == 0 )
-        return Evaluation(plateau);
+    int maximum = -10000;
+    int xdep,ydep,xarr,yarr;
 
-    int[] tabDep= stockage de tout mes déplacements de toute les piece de ma couleur
-
-    for ( i = 0; i< tabDep.length; i++)
+    int tabDepl;
+    for (int i = 0; i< tabDepl; i++)
     {
+        //On joue le coup
+        plateau.DeplacerPiece(pos_possible[i][0],pos_possible[i][1],pos_possible[i][2],pos_possible[i][3]);
 
-      Plateau plateau_modifié = plateau; //copie du plateau
-      Effectuerdeplacement(plateau_modifier,tabDep);
+        //On calcule le score
+        int score = alphaBetaMin(plateau, -10000, 10000, prof - 1 );
 
-      score = alphaBetaMin(plateau_modifié, alpha, beta, prof - 1 );
+        if((score > maximum)/* || ((tmp == maximum) && ((rand() % 2) == 0))*/)
+        {
+            maximum = score;
+            xdep = pos_possible[i][0];
+            ydep = pos_possible[i][1];
+            xarr = pos_possible[i][2];
+            yarr = pos_possible[i][3];
+        }
 
-
-      if( score >= beta )
-         return beta;   // fail hard beta-cutoff
-      if( score > alpha )
-         alpha = score; // alpha acts like max in MiniMax
+        //On annule le coup
+        plateau.DeplacerPiece(pos_possible[i][2],pos_possible[i][3],pos_possible[i][0],pos_possible[i][1]);
     }
-    //deplacer la piece
+    plateau.DeplacerPiece(xdep, ydep, xarr, yarr);
 }
-*/
+
+
+int Plateau::deplacementPossible(int couleur)
+{
+    int n = 0;
+    for(int i = 0; i < 8; i++)
+    {
+        for(int j = 0; j < 8; j++)
+        {
+            if(this->Getplateau(i, j).Getpiece() != NULL && this->Getplateau(i,j).Getpiece()->GetCouleur() == couleur)
+            {
+                for(int a = 0; a < 8; a++)
+                {
+                    for(int b = 0; b < 8; b++)
+                    {
+                        if(this->DeplacerPiece(i,j,a,b) == 1)
+                        {
+                            pos_possible[n][0] = i;
+                            pos_possible[n][1] = j;
+                            pos_possible[n][2] = a;
+                            pos_possible[n][3] = b;
+                            n++;
+                        }
+
+                    }
+                }
+
+
+            }
+
+        }
+    }
+    return n;
+}
 
 int main()
 {
