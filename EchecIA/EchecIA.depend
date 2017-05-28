@@ -15,14 +15,14 @@
 1495895689 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\pion.h
 	"Piece.h"
 
-1495898347 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\pion.cpp
+1495976301 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\pion.cpp
 	<array>
 	<iostream>
 	"../include/Pion.h"
 
 1495973033 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
 
-1495974584 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
+1495976782 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
 	<iostream>
 	"../include/Plateau.h"
 

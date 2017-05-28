@@ -36,8 +36,8 @@ int Pion::DeplacementOK(int depX, int depY, int tab[], int& tabl)
             else if((depX==2) && (depY==0))
             {
                 premierCoup = 0;
-                tab[0] = 1;
-                tab[1] = 0;
+                tab[0] = 0;
+                tab[1] = 1;
                 tabl = 2;
                 return 1;
             }
@@ -81,8 +81,8 @@ int Pion::DeplacementOK(int depX, int depY, int tab[], int& tabl)
             else if((depX==-2) && (depY==0))
             {
                 premierCoup = 0;
-                tab[0] = -1;
-                tab[1] = 0;
+                tab[0] = 0;
+                tab[1] = -1;
                 tabl = 2;
                 return 1;
             }

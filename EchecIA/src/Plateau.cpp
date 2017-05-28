@@ -16,16 +16,16 @@ Plateau::Plateau()
 
     //placement des pions noirs
     this->m_plateau[0][0]->Setpiece( new Tour(1) );
-    this->m_plateau[3][4]->Setpiece( new Fou(1) );//0 2
+    this->m_plateau[0][2]->Setpiece( new Fou(1) );//0 2
     this->m_plateau[0][4]->Setpiece( new Roi(1) );
     this->m_plateau[0][6]->Setpiece( new Cavalier(1) );
-    //this->m_plateau[1][1]->Setpiece( new Pion(1) );
-    //this->m_plateau[1][3]->Setpiece( new Pion(1) );
+    this->m_plateau[1][1]->Setpiece( new Pion(1) );
+    this->m_plateau[1][3]->Setpiece( new Pion(1) );
     this->m_plateau[1][5]->Setpiece( new Pion(1) );
     this->m_plateau[1][7]->Setpiece( new Pion(1) );
-    //this->m_plateau[2][0]->Setpiece( new Pion(1) );
+    this->m_plateau[2][0]->Setpiece( new Pion(1) );//2 0
     this->m_plateau[2][2]->Setpiece( new Pion(1) );
-    //this->m_plateau[2][4]->Setpiece( new Pion(1) );
+    this->m_plateau[2][4]->Setpiece( new Pion(1) );
     this->m_plateau[2][6]->Setpiece( new Pion(1) );
 
 
@@ -34,11 +34,11 @@ Plateau::Plateau()
     this->m_plateau[7][2]->Setpiece( new Fou(2) );
     this->m_plateau[7][4]->Setpiece( new Roi(2) );
     this->m_plateau[7][6]->Setpiece( new Cavalier(2) );
-    //this->m_plateau[6][1]->Setpiece( new Pion(2) );
+    this->m_plateau[6][1]->Setpiece( new Pion(2) );
     this->m_plateau[6][3]->Setpiece( new Pion(2) );
     this->m_plateau[6][5]->Setpiece( new Pion(2) );
-    this->m_plateau[6][7]->Setpiece( new Pion(2) );
-    this->m_plateau[5][0]->Setpiece( new Pion(2) );
+    this->m_plateau[6][7]->Setpiece( new Pion(2) );//6 7
+    this->m_plateau[5][0]->Setpiece( new Pion(2) );//5 0
     this->m_plateau[5][2]->Setpiece( new Pion(2) );
     this->m_plateau[5][4]->Setpiece( new Pion(2) );
     this->m_plateau[5][6]->Setpiece( new Pion(2) );
@@ -227,9 +227,15 @@ int Plateau::TestFinJeu()
             if(piecesPrisent[i]->getType() == 'R')
             {
                 if (piecesPrisent[i]->GetCouleur() == 1)
-                    { return 2;}
+                    {
+                        cout<<"le joueur 2 a gagne."<<endl;
+                        return 2;
+                    }
                 if (piecesPrisent[i]->GetCouleur() == 2)
-                    { return 1;}
+                    {
+                        cout<<"le joueur 1 a gagne."<<endl;
+                        return 1;
+                    }
             }
         }
     }
@@ -303,13 +309,15 @@ int main()
     int xf;
     int yf;
     int joueurcourant=1;
-    //int b=1;//servira plus tard de bool�en de test de fin du jeu
+    int chgtpiece;
+
     p->Afficher();
 
 
     while(p->TestFinJeu() == 0)
     //while(true)
     {
+        chgtpiece = 0;
         cout<<"C'est au joueur "<<joueurcourant<<" de jouer."<<endl;
 
         cout << "ligne de la piece a bouger : \n"; cin >> xd;xd--;
@@ -323,23 +331,30 @@ int main()
         }
 
 
-        cout << "ligne ou deplacer la piece : \n"; cin >> xf;xf--;
-        cout << "colonne ou deplacer la piece : \n"; cin >> yf;yf--;
-        while((xf>=8 || xf<0 || yf>=8 || yf<0) || (p->DeplacerPiece(xd, yd, xf, yf) == 0))
+        cout << "ligne ou deplacer la piece(0 0 pour changer de piece) : \n"; cin >> xf;xf--;
+        cout << "colonne ou deplacer la piece(0 0 pour changer de piece) : \n"; cin >> yf;yf--;
+        if(xf == -1 && yf == -1)
+            chgtpiece = 1;
+
+        while((chgtpiece == 0) && ((xf>=8 || xf<0 || yf>=8 || yf<0) || (p->DeplacerPiece(xd, yd, xf, yf) == 0)) )
         {
+
             cout<< "Coordonnees de la case d'arrivee invalides. Veuillez reessayer."<<endl;
             p->Afficher();
-            cout << "ligne ou deplacer la piece : \n"; cin >> xf;xf--;
-            cout << "colonne ou deplacer la piece : \n"; cin >> yf;yf--;
+            cout << "ligne ou deplacer la piece(0 0 pour changer de piece) : \n"; cin >> xf;xf--;
+            cout << "colonne ou deplacer la piece(0 0 pour changer de piece) : \n"; cin >> yf;yf--;
+            if(xf == -1 && yf == -1)
+                chgtpiece = 1;
         }
 
-        /*
+
         if(joueurcourant == 1)
             joueurcourant = 2;
         else if(joueurcourant == 2)
             joueurcourant = 1;
-        */
+
         //p->AffichePiecePrise();
+        p->TestPionArrive();
 
         p->Afficher();
     }
