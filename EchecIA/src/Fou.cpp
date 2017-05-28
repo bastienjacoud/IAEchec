@@ -25,13 +25,13 @@ Fou::~Fou()
 }
 
 
-int Fou::DeplacementOK(int depX, int depY, int tab[], int& tabl)
+int Fou::DeplacementOK(int depY, int depX, int tab[], int& tabl)
 {
     //tab[j] -> horizontal
     //tab[j+1] -> vertical
     int j=0;
     if(depX == depY)
-    {tabl = 0;
+    {
         tabl = 2*(abs(depX)-1);
         if(depX>0)
         {
@@ -56,8 +56,10 @@ int Fou::DeplacementOK(int depX, int depY, int tab[], int& tabl)
 
     else if(depX == -depY)
     {
+        tabl = 2*(abs(depX)-1);
         if(depX>0)
         {
+            cout<<"test1"<<endl;
             for(int i=1;i<depX;i++)
             {
                 tab[j] = i;
@@ -67,6 +69,7 @@ int Fou::DeplacementOK(int depX, int depY, int tab[], int& tabl)
         }
         if(depX<0)
         {
+            cout<<"test2"<<endl;
             for(int i=-1;i>depX;i--)
             {
                 tab[j] = i;

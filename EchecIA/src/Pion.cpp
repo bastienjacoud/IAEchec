@@ -117,7 +117,52 @@ int Pion::DeplacementOK(int depX, int depY, int tab[], int& tabl)
 
 int Pion::PriseOK(int depX, int depY, int tab[], int& tabl)
 {
-    return Pion::DeplacementOK(depX, depY, tab, tabl);
+    if(GetCouleur() == 1)
+    {
+        if((depX==1) && (depY==1))
+        {
+            premierCoup = 0;
+            tab = NULL;
+            tabl = 0;
+            return 1;
+        }
+        else if((depX==1) && (depY==-1))
+        {
+            premierCoup = 0;
+            tab = NULL;
+            tabl = 0;
+            return 1;
+        }
+        else
+        {
+            tab = NULL;
+            tabl = 0;
+            return 0;
+        }
+    }
+    else
+    {
+        if((depX==-1) && (depY==1))
+        {
+            premierCoup = 0;
+            tab = NULL;
+            tabl = 0;
+            return 1;
+        }
+        else if((depX==-1) && (depY==-1))
+        {
+            premierCoup = 0;
+            tab = NULL;
+            tabl = 0;
+            return 1;
+        }
+        else
+        {
+            tab = NULL;
+            tabl = 0;
+            return 0;
+        }
+    }
 }
 
 void Pion::Afficher()

@@ -15,18 +15,18 @@
 1495895689 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\pion.h
 	"Piece.h"
 
-1495895672 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\pion.cpp
+1495898347 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\pion.cpp
 	<array>
 	<iostream>
 	"../include/Pion.h"
 
 1495892961 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
 
-1495895404 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
+1495972899 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
 	<iostream>
 	"../include/Plateau.h"
 
-1495571276 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
+1495902176 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
 	<vector>
 	"Case.h"
 
@@ -58,7 +58,7 @@
 1495895575 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\cavalier.h
 	"Piece.h"
 
-1495895991 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\fou.cpp
+1495972471 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\fou.cpp
 	<iostream>
 	<cmath>
 	"../include/Fou.h"

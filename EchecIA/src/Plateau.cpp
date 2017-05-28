@@ -16,7 +16,7 @@ Plateau::Plateau()
 
     //placement des pions noirs
     this->m_plateau[0][0]->Setpiece( new Tour(1) );
-    this->m_plateau[0][2]->Setpiece( new Fou(1) );
+    this->m_plateau[3][4]->Setpiece( new Fou(1) );//0 2
     this->m_plateau[0][4]->Setpiece( new Roi(1) );
     this->m_plateau[0][6]->Setpiece( new Cavalier(1) );
     //this->m_plateau[1][1]->Setpiece( new Pion(1) );
@@ -34,7 +34,7 @@ Plateau::Plateau()
     this->m_plateau[7][2]->Setpiece( new Fou(2) );
     this->m_plateau[7][4]->Setpiece( new Roi(2) );
     this->m_plateau[7][6]->Setpiece( new Cavalier(2) );
-    this->m_plateau[6][1]->Setpiece( new Pion(2) );
+    //this->m_plateau[6][1]->Setpiece( new Pion(2) );
     this->m_plateau[6][3]->Setpiece( new Pion(2) );
     this->m_plateau[6][5]->Setpiece( new Pion(2) );
     this->m_plateau[6][7]->Setpiece( new Pion(2) );
@@ -60,6 +60,29 @@ void Plateau::Setplateau(Case plateau[8][8])
         for(int j=0;j<8;j++)
             *m_plateau[i][j] = plateau[i][j];
 }
+
+void Plateau::AjoutePiecePrise(Piece p)
+{
+    for(int i=0;i<24;i++)
+        if(this->piecesPrisent[i] != NULL)
+            *this->piecesPrisent[i] = p;
+}
+
+void Plateau::SupprimePiecePrise(Piece p)
+{
+    for(int i=0;i<24;i++)
+        if(this->piecesPrisent[i] != NULL)
+            if(this->piecesPrisent[i]->getType() == p.getType())
+                this->piecesPrisent[i] = NULL;
+}
+
+void Plateau::AffichePiecePrise()
+{
+    for(int i=0;i<24;i++)
+        if(this->piecesPrisent[i] != NULL)
+            cout<<this->piecesPrisent[i]->getType()<<"test"<<endl;
+}
+
 /*
 void Plateau::SetPiece(int i, int j, Piece* p)
 {
@@ -90,6 +113,7 @@ int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonct
         {
             if(tabt == 0)//Si pas de case entre case arriv�e et case d�part
             {
+                this->AjoutePiecePrise(*this->Getplateau(xarrivee, yarrivee).Getpiece());
                 this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
                 return 1;
             }
@@ -98,7 +122,6 @@ int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonct
                 int b=1;
                 for(int i=0;i<tabt;i+=2)
                 {
-                    cout<<tab[i+1] + xdep<<" "<<tab[i] + ydep<<endl;
                     if(this->Getplateau(xdep + tab[i+1], ydep + tab[i]).Getpiece() != NULL)//S'il y a une pi�ce entre la case de d�part et d'arriv�
                     {
                         b=0;
@@ -107,6 +130,7 @@ int Plateau::prendrePiece(int xdep, int ydep, int xarrivee, int yarrivee)//Fonct
                 }
                 if(b==1)
                 {
+                    this->AjoutePiecePrise(*this->Getplateau(xarrivee, yarrivee).Getpiece());
                     this->Getplateau(xarrivee, yarrivee).Setpiece(  this->Getplateau(xdep, ydep).Move() );
                     return 1;
                 }
@@ -147,6 +171,7 @@ int Plateau::DeplacerPiece(int xdep, int ydep, int xarrivee, int yarrivee)
             }
             else
             {
+                cout<<"tabt = "<<tabt<<endl;
                 int b=1;
                 for(int i=0;i<tabt;i+=2)
                 {
@@ -180,18 +205,75 @@ int Plateau::TestFinJeu()
     //la partie se termine lorsque le roi adverse est prit ou en echec et mat
     for(int i=0;i<24;i++)
     {
-        if(piecesPrisent[i] == NULL)
-            return 0;
-        else if(piecesPrisent[i]->getType() == 'R')
+        if(piecesPrisent[i] != NULL)
         {
-            if (piecesPrisent[i]->GetCouleur() == 1)
-                { return 2;}
-            if (piecesPrisent[i]->GetCouleur() == 2)
-           return 1;     { return 1;}
+            if(piecesPrisent[i]->getType() == 'R')
+            {
+                if (piecesPrisent[i]->GetCouleur() == 1)
+                    { return 2;}
+                if (piecesPrisent[i]->GetCouleur() == 2)
+                    { return 1;}
+            }
         }
     }
     return 0;
+}
 
+void Plateau::TestPionArrive()
+{
+    char c;
+    for(int i=0;i<8;i++)
+    {
+        if(this->Getplateau(0,i).Getpiece() != NULL)
+            if(this->Getplateau(0,i).Getpiece()->getType() == 'P')
+            {
+                int b=0;
+                while(b==0)
+                {
+                    cout<<"Par quelle piece remplacer votre pion?(P, T, C ou F)"<<endl;
+                    cin>>c;
+                    for(int k=0;k<24;k++)
+                    {
+                        if(this->piecesPrisent[k] != NULL)
+                            if((this->piecesPrisent[k]->getType() == c) && (this->piecesPrisent[k]->GetCouleur() == 2))
+                            {
+                                b=1;
+                                this->Getplateau(0,i).Setpiece(this->piecesPrisent[k]);
+                                this->piecesPrisent[k] = NULL;
+                            }
+                    }
+                    if(b==0)
+                    {
+                        cout<<"Choisissez une pièce que vous avez perdu !"<<endl;
+                    }
+                }
+            }
+
+        if(this->Getplateau(7,i).Getpiece() != NULL)
+            if(this->Getplateau(7,i).Getpiece()->getType() == 'P')
+            {
+                int b=0;
+                while(b==0)
+                {
+                    cout<<"Par quelle piece remplacer votre pion?(P, T, C ou F)"<<endl;
+                    cin>>c;
+                    for(int k=0;k<24;k++)
+                    {
+                        if(this->piecesPrisent[k] != NULL)
+                            if((this->piecesPrisent[k]->getType() == c) && (this->piecesPrisent[k]->GetCouleur() == 1))
+                            {
+                                b=1;
+                                this->Getplateau(7,i).Setpiece(this->piecesPrisent[k]);
+                                this->piecesPrisent[k] = NULL;
+                            }
+                    }
+                    if(b==0)
+                    {
+                        cout<<"Choisissez une pièce que vous avez perdu !"<<endl;
+                    }
+                }
+            }
+    }
 }
 
 
@@ -240,6 +322,7 @@ int main()
         else if(joueurcourant == 2)
             joueurcourant = 1;
         */
+        p->AffichePiecePrise();
 
         p->Afficher();
     }
