@@ -8,9 +8,11 @@ class Plateau
 {
     public:
         Plateau();
+        Plateau(Plateau& p);
         virtual ~Plateau();
         int main();
         Case& Getplateau(int i, int j) { return *m_plateau[i][j]; }//ligne puis colonne
+        Case* RetPlateau(int i, int j) const {return m_plateau[i][j];}
         void Setplateau(Case plateau[8][8]);
         void SetPiece(int i, int j, Piece* p);
         void Afficher();
@@ -22,12 +24,12 @@ class Plateau
         void AffichePiecePrise();
         void TestPionArrive();
         //Fonctions pour l'ia
-        int alphaBetaMin(Plateau& plateau, int& alpha, int& beta, int prof );
-        int alphaBetaMax(Plateau& plateau, int& alpha, int& beta, int prof );
-        void lancerIA(Plateau plateau, int prof );
-        int Evaluation(Plateau& plateau);
+        int alphaBetaMin(Plateau& plateau, int& alpha, int& beta, int prof, int xarr, int yarr );
+        int alphaBetaMax(Plateau& plateau, int& alpha, int& beta, int prof, int xarr, int yarr );
+        void lancerIA(int prof );
+        int Evaluation(Plateau& plateau, int xarr, int yarr);
         int deplacementPossible(int couleur);
-        Plateau CopiePlateau();
+        Plateau* CopiePlateau();
     protected:
     private:
         Case* m_plateau[8][8];

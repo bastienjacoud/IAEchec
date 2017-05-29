@@ -8,6 +8,7 @@ class Pion : public Piece
     public:
         Pion();
         Pion(int couleur);
+        Pion(Piece& p);
         virtual ~Pion();
         virtual void Afficher();
         virtual int DeplacementOK(int depX, int depY, int tab[], int& tabl);

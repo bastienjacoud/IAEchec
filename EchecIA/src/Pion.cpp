@@ -14,6 +14,11 @@ Pion::Pion(int couleur) : Piece(couleur)
     premierCoup = 1;
 }
 
+Pion::Pion(Piece& p) : Piece(p)
+{
+    premierCoup = 1;
+}
+
 Pion::~Pion()
 {
 

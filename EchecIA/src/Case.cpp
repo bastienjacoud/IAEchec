@@ -6,8 +6,24 @@ using namespace std;
 
 Case::Case()
 {
+    //cout<<"test2"<<endl;
     this->m_piece = NULL;
     //ctor
+}
+
+Case::Case(Piece p)
+{
+    //cout<<"test1"<<endl;
+    if(this->m_piece->getType() == 'C')
+        this->m_piece = new Cavalier(p);
+    else if(this->m_piece->getType() == 'F')
+        this->m_piece = new Fou(p);
+    else if(this->m_piece->getType() == 'P')
+        this->m_piece = new Pion(p);
+    else if(this->m_piece->getType() == 'R')
+        this->m_piece = new Roi(p);
+    else if(this->m_piece->getType() == 'T')
+        this->m_piece = new Tour(p);
 }
 
 Case::~Case()
@@ -23,10 +39,14 @@ void Case::Afficher()
         m_piece->Afficher();
 }
 
-Case Case::CopieCase()
+Case* Case::CopieCase()
 {
-    Case c;
-    c.Getpiece() = this->Getpiece()->CopiePiece();
+    Case* c = new Case();
+    if(this->Getpiece() == NULL)
+        c->m_piece = NULL;
+    else
+        c->Setpiece(this->Getpiece()->CopiePiece());
+    return c;
 }
 
 Piece* Case::Move()

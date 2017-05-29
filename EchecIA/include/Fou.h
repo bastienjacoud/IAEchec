@@ -12,6 +12,7 @@ class Fou : public Piece
     public:
         Fou();
         Fou(int couleur);
+        Fou(Piece& p);
         virtual ~Fou();
         virtual int DeplacementOK(int depX, int depY, int tab[], int& tabl);
         virtual int PriseOK(int depX, int depY, int tab[], int& tabl);

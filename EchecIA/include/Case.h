@@ -12,13 +12,14 @@ class Case
 {
     public:
         Case();
+        Case(Piece p);
         virtual ~Case();
         Piece* Getpiece() { return m_piece; }
         Piece* Move();
         void Setpiece(Piece* val) { m_piece = val; }
         void Afficher();
         void ChangePiece(Piece* p);
-        Case CopieCase();
+        Case* CopieCase();
     protected:
     private:
         Piece* m_piece;

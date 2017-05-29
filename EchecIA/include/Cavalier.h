@@ -13,6 +13,7 @@ class Cavalier : public Piece
     public:
         Cavalier();
         Cavalier(int couleur);
+        Cavalier(Piece& p);
         virtual ~Cavalier();
         virtual void Afficher();
         virtual int DeplacementOK(int depX, int depY, int tab[], int& tabl);

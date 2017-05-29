@@ -19,6 +19,11 @@ Fou::Fou(int couleur) : Piece(couleur)
 
 }
 
+Fou::Fou(Piece& p) : Piece(p)
+{
+
+}
+
 Fou::~Fou()
 {
 

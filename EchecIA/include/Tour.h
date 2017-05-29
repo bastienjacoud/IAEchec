@@ -8,6 +8,7 @@ class Tour : public Piece
     public:
         Tour();
         Tour(int couleur);
+        Tour(Piece& p);
         virtual ~Tour();
         virtual int DeplacementOK(int depX, int depY, int tab[], int& tabl);
         virtual int PriseOK(int depX, int depY, int tab[], int& tabl);

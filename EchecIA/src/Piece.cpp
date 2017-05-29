@@ -12,6 +12,14 @@ Piece::Piece()
     SetCouleur(0);
 }
 
+Piece::Piece(Piece& p)
+{
+    //cout<<"test"<<endl;
+    SetposX(-1);
+    SetposY(-1);
+    SetCouleur(p.GetCouleur());
+}
+
 //Constructeur prenant en chatge la couleur de l'�quipe
 Piece::Piece(int couleur)
 {
@@ -23,12 +31,12 @@ Piece::~Piece()
     //dtor
 }
 
-Piece Piece::CopiePiece()
+Piece* Piece::CopiePiece()
 {
-    Piece p;
-    p.m_couleur = this->m_couleur;
-    p.m_posX = this->m_posX;
-    p.m_posY = this->m_posY;
+    Piece* p = new Piece();
+    p->m_couleur = this->m_couleur;
+    p->m_posX = this->m_posX;
+    p->m_posY = this->m_posY;
     return p;
 }
 

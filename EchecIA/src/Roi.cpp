@@ -17,6 +17,11 @@ Roi::Roi(int couleur) : Piece(couleur)
 
 }
 
+Roi::Roi(Piece& p) : Piece(p)
+{
+
+}
+
 Roi::~Roi()
 {
     //dtor

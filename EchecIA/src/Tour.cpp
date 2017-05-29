@@ -15,6 +15,11 @@ Tour::Tour(int couleur) : Piece(couleur)
 
 }
 
+Tour::Tour(Piece& p) : Piece(p)
+{
+    //cout<<"test1"<<endl;
+}
+
 Tour::~Tour()
 {
     //dtor

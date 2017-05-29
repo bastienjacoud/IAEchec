@@ -19,6 +19,11 @@ Cavalier::Cavalier(int couleur) : Piece(couleur)
 
 }
 
+Cavalier::Cavalier(Piece& p) : Piece(p)
+{
+
+}
+
 Cavalier::~Cavalier()
 {
     //dtor
