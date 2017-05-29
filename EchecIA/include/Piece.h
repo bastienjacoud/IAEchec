@@ -19,6 +19,7 @@ class Piece
         virtual int PriseOK(int depX, int depY, int tab[], int& tabl);
         virtual char getType(){return 'I';}
         virtual void SetPremierCoup(int coup){}
+        Piece CopiePiece();
     protected:
         int m_posX;
         int m_posY;

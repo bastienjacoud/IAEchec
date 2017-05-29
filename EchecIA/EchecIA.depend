@@ -20,14 +20,14 @@
 	<iostream>
 	"../include/Pion.h"
 
-1496057933 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
+1496075678 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
 
-1496071407 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
+1496074675 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
 	<iostream>
 	<windows.h>
 	"../include/Plateau.h"
 
-1496010257 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
+1496074466 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
 	<vector>
 	"Case.h"
 
@@ -37,7 +37,7 @@
 	<cmath>
 	"../include/Tour.h"
 
-1495893013 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\piece.cpp
+1496075655 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\piece.cpp
 	<array>
 	<iostream>
 	"../include/Piece.h"

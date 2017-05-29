@@ -23,6 +23,12 @@ void Case::Afficher()
         m_piece->Afficher();
 }
 
+Case Case::CopieCase()
+{
+    Case c;
+    c.Getpiece() = this->Getpiece()->CopiePiece();
+}
+
 Piece* Case::Move()
 {
     Piece *p = m_piece;

@@ -27,6 +27,7 @@ class Plateau
         void lancerIA(Plateau plateau, int prof );
         int Evaluation(Plateau& plateau);
         int deplacementPossible(int couleur);
+        Plateau CopiePlateau();
     protected:
     private:
         Case* m_plateau[8][8];

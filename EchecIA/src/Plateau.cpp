@@ -254,9 +254,23 @@ void Plateau::TestPionArrive()
                 int b=0;
                 while(b==0)
                 {
-                    cout<<"Par quelle piece remplacer votre pion?(P, T, C ou F)"<<endl;
+                    cout<<"Par quelle piece remplacer votre pion?(T, C ou F)"<<endl;
                     cin>>c;
-                    for(int k=0;k<24;k++)
+                    if(c == 'T'){
+                        this->Getplateau(0,i).Setpiece(new Tour(2));
+                        b=1;
+                    }
+
+                    if(c == 'C'){
+                        this->Getplateau(0,i).Setpiece(new Cavalier(2));
+                        b=1;
+                    }
+
+                    if(c == 'F'){
+                        this->Getplateau(0,i).Setpiece(new Fou(2));
+                        b=1;
+                    }
+/*                    for(int k=0;k<24;k++)
                     {
                         if(this->piecesPrisent[k] != NULL)
                         {
@@ -271,9 +285,10 @@ void Plateau::TestPionArrive()
                             if(c == 'P')
                                 b=1;
                     }
-                    if(b==0)
+*/                    if(b==0)
                     {
-                        cout<<"Choisissez une pièce que vous avez perdu !"<<endl;
+                        //cout<<"Choisissez une pièce que vous avez perdu !"<<endl;
+                        cout<<"Vous avez le choix seulement entre T, C et F !"<<endl;
                     }
                 }
             }
@@ -284,9 +299,23 @@ void Plateau::TestPionArrive()
                 int b=0;
                 while(b==0)
                 {
-                    cout<<"Par quelle piece remplacer votre pion?(P, T, C ou F)"<<endl;
+                    cout<<"Par quelle piece remplacer votre pion?(T, C ou F)"<<endl;
                     cin>>c;
-                    for(int k=0;k<24;k++)
+                    if(c == 'T'){
+                        this->Getplateau(7,i).Setpiece(new Tour(1));
+                        b=1;
+                    }
+
+                    if(c == 'C'){
+                        this->Getplateau(7,i).Setpiece(new Cavalier(1));
+                        b=1;
+                    }
+
+                    if(c == 'F'){
+                        this->Getplateau(7,i).Setpiece(new Fou(1));
+                        b=1;
+                    }
+/*                    for(int k=0;k<24;k++)
                     {
                         if(this->piecesPrisent[k] != NULL)
                             if((this->piecesPrisent[k]->getType() == c) && (this->piecesPrisent[k]->GetCouleur() == 1))
@@ -296,13 +325,29 @@ void Plateau::TestPionArrive()
                                 this->piecesPrisent[k] = NULL;
                             }
                     }
-                    if(b==0)
+*/                    if(b==0)
                     {
-                        cout<<"Choisissez une pièce que vous avez perdu !"<<endl;
+                        //cout<<"Choisissez une pièce que vous avez perdu !"<<endl;
+                        cout<<"Vous avez le choix seulement entre T, C et F !"<<endl;
                     }
                 }
             }
     }
+}
+
+Plateau Plateau::CopiePlateau()
+{
+    Plateau p;
+    for(int i=0;i<768;i++)
+        for(int j=0;j<4;j++)
+            p.pos_possible[i][j] = this->pos_possible[i][j];
+    p.np = this->np;
+    for(int i=0;i<24;i++)
+        *p.piecesPrisent[i] = this->piecesPrisent[i]->CopiePiece();
+    for(int i=0;i<8;i++)
+        for(int j=0;j<8;j++)
+            p.Getplateau(i,j) = this->Getplateau(i,j).CopieCase();
+    return p;
 }
 
 /*
@@ -317,6 +362,7 @@ int Plateau::Evaluation(Plateau& plateau)
 
 int Plateau::alphaBetaMax(Plateau& plateau, int& alpha, int& beta, int prof )//plateau modifié
 {
+    Piece* prise;//Sert si l'IA "prend" une piece à la remettre
     if ( prof == 0 )
         return Evaluation(plateau);
 
@@ -330,62 +376,97 @@ int Plateau::alphaBetaMax(Plateau& plateau, int& alpha, int& beta, int prof )//p
     for (int i = 0; i< tabDepl; i++)
     {
       Plateau plateau_modifie = plateau; //copie du plateau
+
+      if(plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Getpiece() == NULL)
+            prise = NULL;
+      else
+            prise = plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Getpiece();
+
       //On joue le coup
       plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Setpiece( plateau_modifie.Getplateau(positions[i][0], positions[i][1]).Move() );
+      plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Getpiece()->SetPremierCoup(0);
       plateau_modifie.Afficher();
-      Sleep(1000);
+      //Sleep(1000);
       //On calcule le score
       int score = alphaBetaMin(plateau_modifie, alpha, beta, prof - 1 );
+
+      //On annule le coup
+      plateau_modifie.Getplateau(positions[i][0], positions[i][1]).Setpiece( plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Move() );
+      plateau_modifie.Getplateau(positions[i][0], positions[i][1]).Getpiece()->SetPremierCoup(1);
+
+      if(prise != NULL)
+            plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Setpiece( prise );
+
+      plateau_modifie.Afficher();
+      //Sleep(1000);
 
       if( score >= beta )
          return beta;   // fail hard beta-cutoff
       if( score > alpha )
          alpha = score; // alpha acts like max in MiniMax
-
-      //On annule le coup
-      plateau_modifie.Getplateau(positions[i][0], positions[i][1]).Setpiece( plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Move() );
-      plateau_modifie.Getplateau(positions[i][0], positions[i][1]).Getpiece()->SetPremierCoup(1);
-      plateau_modifie.Afficher();
-      Sleep(1000);
     }
     return alpha;
 }
 
 int Plateau::alphaBetaMin(Plateau& plateau, int& alpha, int& beta, int prof )
 {
+    Piece* prise;//Sert si l'IA "prend" une piece à la remettre
     if ( prof == 0 )
         return - Evaluation(plateau);
 
     int tabDepl = deplacementPossible(2);//l'IA jouera toujours avec la couleur 2
-    cout<<tabDepl<<endl;
+    //cout<<tabDepl<<endl;
     int positions[tabDepl][4];
     for(int i=0;i<tabDepl;i++)
         for(int j=0;j<4;j++)
+        {
             positions[i][j] = pos_possible[i][j];
+        }
 
+    cout<<"Depart 1 "<<positions[0][0]<<positions[0][1]<<endl;
+    cout<<"Arrivee 1 "<<positions[0][2]<<positions[0][3]<<endl;
+
+    cout<<"Depart 2 "<<positions[1][0]<<positions[1][1]<<endl;
+    cout<<"Arrivee 2 "<<positions[1][2]<<positions[1][3]<<endl;
     for (int i = 0; i< tabDepl; i++)
     {
       //cout<<"test"<<endl;
       Plateau plateau_modifie = plateau; //copie du plateau
+
+      if(plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Getpiece() == NULL)
+            prise = NULL;
+      else
+            prise = plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Getpiece();
+
       //On joue le coup
       plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Setpiece( plateau_modifie.Getplateau(positions[i][0], positions[i][1]).Move() );
+      plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Getpiece()->SetPremierCoup(0);
 
       plateau_modifie.Afficher();
-      Sleep(1000);
+      //Sleep(1000);
 
       //On calcule le score
       int score = alphaBetaMax(plateau_modifie, alpha, beta, prof - 1 );
 
-      if( score <= alpha )
-         return alpha; // fail hard alpha-cutoff
-      if( score < beta )
-         beta = score; // beta acts like min in MiniMax
-
+      cout<<"test1"<<endl;
       //On annule le coup
       plateau_modifie.Getplateau(positions[i][0], positions[i][1]).Setpiece( plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Move() );
       plateau_modifie.Getplateau(positions[i][0], positions[i][1]).Getpiece()->SetPremierCoup(1);
+
+      if(prise != NULL)
+            plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Setpiece( prise );
+
+      cout<<"test2"<<endl;
       plateau_modifie.Afficher();
-      Sleep(1000);
+      //Sleep(1000);
+
+      if( score <= alpha )
+      {
+          return alpha; // fail hard alpha-cutoff
+      }
+
+      if( score < beta )
+         beta = score; // beta acts like min in MiniMax
     }
     return beta;
 }
@@ -395,6 +476,7 @@ void Plateau::lancerIA(Plateau plateau, int prof)
 {
     int maximum = -10000;
     int minimum = 10000;
+    Piece* prise;//Sert si l'IA "prend" une piece à la remettre
     int xdep,ydep,xarr,yarr;
 
     int tabDepl = deplacementPossible(2);//l'IA jouera toujours avec la couleur 2
@@ -413,10 +495,16 @@ void Plateau::lancerIA(Plateau plateau, int prof)
         //cout<<plateau.DeplacerPiece(pos_possible[i][0],pos_possible[i][1],pos_possible[i][2],pos_possible[i][3]);
         //cout<<plateau.DeplacerPiece(2,5,2,3);
         //cout<<plateau.Getplateau(pos_possible[i][2],pos_possible[i][3]).Getpiece()->getType();
+        if(plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Getpiece() == NULL)
+            prise = NULL;
+        else
+            prise = plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Getpiece();
         plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Setpiece( plateau_modifie.Getplateau(positions[i][0], positions[i][1]).Move() );
+        plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Getpiece()->SetPremierCoup(0);
+
         /*
         this->Afficher();
-        Sleep(5000);
+        Sleep(1000);
         */
         plateau_modifie.Afficher();
         Sleep(1000);
@@ -442,9 +530,11 @@ void Plateau::lancerIA(Plateau plateau, int prof)
         //cout<<"test2"<<endl;
         plateau_modifie.Getplateau(positions[i][0], positions[i][1]).Setpiece( plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Move() );
         plateau_modifie.Getplateau(positions[i][0], positions[i][1]).Getpiece()->SetPremierCoup(1);
+        if(prise != NULL)
+            plateau_modifie.Getplateau(positions[i][2], positions[i][3]).Setpiece( prise );
         plateau_modifie.Afficher();
         //cout<<"test"<<endl;
-        Sleep(1000);
+        //Sleep(1000);
     }
     //cout<<xdep<<ydep<<xarr<<yarr<<"test"<<endl;
     cout<<"Deplacement final :"<<endl;
@@ -612,8 +702,6 @@ int main()
     // 2 -> IA
     int chgtpiece;
 
-    p->Afficher();
-
     while(p->TestFinJeu() == 0)
     //while(true)
     {
@@ -621,6 +709,8 @@ int main()
         {
             chgtpiece = 0;
             cout<<"C'est au joueur "<<joueurcourant<<" de jouer."<<endl;
+
+            p->Afficher();
 
             cout << "ligne de la piece a bouger : \n"; cin >> xd;xd--;
             cout << "colonne de la piece a bouger : \n"; cin >> yd;yd--;
@@ -656,16 +746,19 @@ int main()
 
             //p->AffichePiecePrise();
             p->TestPionArrive();
-
-            p->Afficher();
         }
         else if(joueurcourant == 2)
         {
-            cout<<"C'est a l'IA de jouer."<<endl<<endl;
+            //Sleep(10000);
             p->lancerIA(*p,2);
+            //p->AffichePiecePrise();
+            p->TestPionArrive();
+
             p->Afficher();
+
             joueurcourant = 1;
         }
+
 
     }
 

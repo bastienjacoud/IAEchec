@@ -23,6 +23,15 @@ Piece::~Piece()
     //dtor
 }
 
+Piece Piece::CopiePiece()
+{
+    Piece p;
+    p.m_couleur = this->m_couleur;
+    p.m_posX = this->m_posX;
+    p.m_posY = this->m_posY;
+    return p;
+}
+
 void Piece::SetCouleur(int couleur)
 {
     if(couleur == 1 || couleur == 2)

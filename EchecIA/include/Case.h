@@ -18,6 +18,7 @@ class Case
         void Setpiece(Piece* val) { m_piece = val; }
         void Afficher();
         void ChangePiece(Piece* p);
+        Case CopieCase();
     protected:
     private:
         Piece* m_piece;
