@@ -39,14 +39,15 @@ void Case::Afficher()
         m_piece->Afficher();
 }
 
-Case* Case::CopieCase()
-{
+Case* Case::CopieCase(){
+
     Case* c = new Case();
     if(this->Getpiece() == NULL)
         c->m_piece = NULL;
     else
         c->Setpiece(this->Getpiece()->CopiePiece());
     return c;
+
 }
 
 Piece* Case::Move()
