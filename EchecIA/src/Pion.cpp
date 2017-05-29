@@ -19,23 +19,32 @@ Pion::~Pion()
 
 }
 
+void Pion::SetPremierCoup(int coup)
+{
+    premierCoup = coup;
+}
+
 int Pion::DeplacementOK(int depX, int depY, int tab[], int& tabl)
 {
-
+    /*
+    cout<<"depX :"<<depX<<endl;
+    cout<<"depY :"<<depY<<endl;
+    */
+    //cout<<"Premier coup :"<<premierCoup<<endl;
     if(GetCouleur() == 1)
     {
         if(premierCoup == 1)
         {
             if((depX==1) && (depY==0))
             {
-                premierCoup = 0;
+                //premierCoup = 0;
                 tab = NULL;
                 tabl = 0;
                 return 1;
             }
             else if((depX==2) && (depY==0))
             {
-                premierCoup = 0;
+                //premierCoup = 0;
                 tab[0] = 0;
                 tab[1] = 1;
                 tabl = 2;
@@ -53,7 +62,7 @@ int Pion::DeplacementOK(int depX, int depY, int tab[], int& tabl)
         {
             if((depX==1) && (depY==0))
             {
-                premierCoup = 0;
+                //premierCoup = 0;
                 tab = NULL;
                 tabl = 0;
                 return 1;
@@ -69,18 +78,21 @@ int Pion::DeplacementOK(int depX, int depY, int tab[], int& tabl)
     }
     else
     {
+
         if(premierCoup == 1)
         {
+
             if((depX==-1) && (depY==0))
             {
-                premierCoup = 0;
+                //premierCoup = 0;
                 tab = NULL;
                 tabl = 0;
                 return 1;
             }
             else if((depX==-2) && (depY==0))
             {
-                premierCoup = 0;
+                //cout<<"test"<<endl;
+                //premierCoup = 0;
                 tab[0] = 0;
                 tab[1] = -1;
                 tabl = 2;
@@ -98,7 +110,7 @@ int Pion::DeplacementOK(int depX, int depY, int tab[], int& tabl)
         {
             if((depX==-1) && (depY==0))
             {
-                premierCoup = 0;
+                //premierCoup = 0;
                 tab = NULL;
                 tabl = 0;
                 return 1;
@@ -121,14 +133,14 @@ int Pion::PriseOK(int depX, int depY, int tab[], int& tabl)
     {
         if((depX==1) && (depY==1))
         {
-            premierCoup = 0;
+            //premierCoup = 0;
             tab = NULL;
             tabl = 0;
             return 1;
         }
         else if((depX==1) && (depY==-1))
         {
-            premierCoup = 0;
+            //premierCoup = 0;
             tab = NULL;
             tabl = 0;
             return 1;
@@ -144,14 +156,14 @@ int Pion::PriseOK(int depX, int depY, int tab[], int& tabl)
     {
         if((depX==-1) && (depY==1))
         {
-            premierCoup = 0;
+            //premierCoup = 0;
             tab = NULL;
             tabl = 0;
             return 1;
         }
         else if((depX==-1) && (depY==-1))
         {
-            premierCoup = 0;
+            //premierCoup = 0;
             tab = NULL;
             tabl = 0;
             return 1;

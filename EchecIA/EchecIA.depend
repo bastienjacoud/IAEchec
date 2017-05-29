@@ -12,21 +12,22 @@
 	"Fou.h"
 	"Pion.h"
 
-1495895689 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\pion.h
+1496057921 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\pion.h
 	"Piece.h"
 
-1495976301 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\pion.cpp
+1496071237 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\pion.cpp
 	<array>
 	<iostream>
 	"../include/Pion.h"
 
-1495973033 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
+1496057933 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
 
-1495976782 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
+1496071407 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
 	<iostream>
+	<windows.h>
 	"../include/Plateau.h"
 
-1495974258 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
+1496010257 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\plateau.h
 	<vector>
 	"Case.h"
 

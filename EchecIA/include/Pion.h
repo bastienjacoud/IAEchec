@@ -13,6 +13,7 @@ class Pion : public Piece
         virtual int DeplacementOK(int depX, int depY, int tab[], int& tabl);
         virtual int PriseOK(int depX, int depY, int tab[], int& tabl);
         virtual char getType(){ return 'P';}
+        virtual void SetPremierCoup(int coup);
     private:
         int premierCoup;//vaut 1 si c'est le premier coup, 0 sinon
 };
