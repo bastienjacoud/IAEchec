@@ -22,7 +22,7 @@
 
 1496084815 c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\include\piece.h
 
-1496095288 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
+1496097361 source:c:\documents\travail\info\algo_prog\projetechecia\iaechec\echecia\src\plateau.cpp
 	<iostream>
 	<windows.h>
 	"../include/Plateau.h"

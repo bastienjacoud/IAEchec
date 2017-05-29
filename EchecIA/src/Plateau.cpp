@@ -769,7 +769,7 @@ int main()
         {
             cout<<"L'ia est en train de jouer"<<endl;
             //Sleep(10000);
-            p->lancerIA(3);
+            p->lancerIA(6);
             //p->AffichePiecePrise();
             p->TestPionArrive();
 
